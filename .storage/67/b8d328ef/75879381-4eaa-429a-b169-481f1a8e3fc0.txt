@@ -1,0 +1,43 @@
+$ cp "/workspace/uploads/WhatsApp Image 2025-12-02 at 19.18.08.jpeg" public/assets/quien-soc-2.jpeg && pnpm run lint && pnpm run build
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 124 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.91 kB │ gzip:   0.47 kB
+dist/assets/index-BOG2OiyR.css   63.61 kB │ gzip:  10.92 kB
+dist/assets/index-4LyhOj7X.js   355.13 kB │ gzip: 111.04 kB
+✓ built in 3.49s
+$ pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 124 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.91 kB │ gzip:   0.47 kB
+dist/assets/index-BOG2OiyR.css   63.61 kB │ gzip:  10.92 kB
+dist/assets/index-De6aHv4P.js   355.13 kB │ gzip: 111.03 kB
+✓ built in 3.48s

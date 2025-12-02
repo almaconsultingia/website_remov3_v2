@@ -1,0 +1,97 @@
+$ cp "/workspace/uploads/Hailuo_Video_Resolución hero desktop_ 1920×_450497120504807426.mp4" public/assets/hero.mp4 && pnpm run lint && pnpm run build
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 124 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.91 kB │ gzip:   0.47 kB
+dist/assets/index-D2ft-lCT.css   62.34 kB │ gzip:  10.80 kB
+dist/assets/index-DJ0U7Awx.js   348.39 kB │ gzip: 109.61 kB
+✓ built in 3.43s
+$ cp "/workspace/uploads/image (5).png" public/assets/quien-soy-young.png
+
+$ pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 124 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.91 kB │ gzip:   0.47 kB
+dist/assets/index-DfrgiYA7.css   62.39 kB │ gzip:  10.81 kB
+dist/assets/index-BmqG2pf8.js   348.48 kB │ gzip: 109.61 kB
+✓ built in 3.35s
+$ cp "/workspace/uploads/fisio.jpg" public/assets/fisio.jpg
+
+$ pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 124 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.91 kB │ gzip:   0.47 kB
+dist/assets/index-DfrgiYA7.css   62.39 kB │ gzip:  10.81 kB
+dist/assets/index-Nah8ubbs.js   348.48 kB │ gzip: 109.61 kB
+✓ built in 3.10s
+$ cp "/workspace/uploads/image (6).png" public/assets/fisio.jpg
+
+$ pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 117 modules transformed.
+x Build failed in 1.94s
+error during build:
+src/App.tsx (5:7): "default" is not exported by "src/pages/Index.tsx", imported by "src/App.tsx".
+file: /workspace/shadcn-ui/src/App.tsx:5:7
+
+3: import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+4: import { BrowserRouter, Routes, Route } from 'react-router-dom';
+5: import Index from './pages/Index';
+          ^
+6: import NotFound from './pages/NotFound';
+
+    at getRollupError (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+    at error (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+    at Module.error (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:16830:16)
+    at Module.traceVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:17279:29)
+    at ModuleScope.findVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:14925:39)
+    at ReturnValueScope.findVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:5620:38)
+    at FunctionBodyScope.findVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:5620:38)
+    at Identifier.bind (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:5394:40)
+    at CallExpression.bind (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:2781:28)
+    at CallExpression.bind (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:11986:15)
+ ELIFECYCLE  Command failed with exit code 1.

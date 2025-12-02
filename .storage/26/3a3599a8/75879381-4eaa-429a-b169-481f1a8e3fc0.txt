@@ -1,0 +1,39 @@
+$ cp "/workspace/uploads/Hailuo_Video_Resolución hero desktop_ 1920×_450497120504807426.mp4" public/assets/hero.mp4 && pnpm run lint && pnpm run build
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 124 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.91 kB │ gzip:   0.47 kB
+dist/assets/index-D2ft-lCT.css   62.34 kB │ gzip:  10.80 kB
+dist/assets/index-DJ0U7Awx.js   348.39 kB │ gzip: 109.61 kB
+✓ built in 3.43s
+$ cp "/workspace/uploads/image (5).png" public/assets/quien-soy-young.png
+
+$ pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 124 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.91 kB │ gzip:   0.47 kB
+dist/assets/index-DfrgiYA7.css   62.39 kB │ gzip:  10.81 kB
+dist/assets/index-BmqG2pf8.js   348.48 kB │ gzip: 109.61 kB
+✓ built in 3.35s
