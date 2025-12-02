@@ -1,2 +1,0 @@
-$ cp "/workspace/uploads/Modificación_de_video_con_instrucciones_específicas.mp4" "public/assets/hero2.mp4" && pnpm run lint && pnpm run build
-cp: cannot stat '/workspace/uploads/Modificación_de_video_con_instrucciones_específicas.mp4': No such file or directory
