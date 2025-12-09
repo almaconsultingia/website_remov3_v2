@@ -509,7 +509,6 @@ function IndexPage() {
           loop
           playsInline
           preload="auto"
-          poster="/assets/fisio.jpg"
         >
           <source src="/assets/hero.mp4" type="video/mp4" />
         </video>
