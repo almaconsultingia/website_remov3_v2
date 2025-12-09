@@ -1,21 +1,10 @@
 {
-  "version": 3,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist",
-        "env": {
-          "VERCEL_VITE_USE_OUTPUT_V2": "true"
-        }
-      }
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "build": {
+    "env": {
+      "VERCEL_VITE_USE_OUTPUT_V2": "true"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+  }
 }
