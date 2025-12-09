@@ -558,7 +558,7 @@ function IndexPage() {
             {/* Derecha: imagen unificada al estilo, sin borde blanco */}
             <div className="rounded-xl overflow-hidden shadow-sm">
               <img
-                src="/assets/quien-soc-2.jpeg"
+                src="/images/quien-soc-2.jpeg"
                 alt={lang === 'es' ? 'Fisioterapeuta en sesión - imagen' : 'Fisioterapeuta en sessió - imatge'}
                 className="w-full h-[420px] md:h-[520px] object-cover"
                 loading="lazy"
