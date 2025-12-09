@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/verify-build.js",
-    "build:vercel": "vite build",
+    "build:vercel": "vite build && node scripts/post-build-verify.js",
     "lint": "eslint --quiet ./src",
     "preview": "vite preview"
   },

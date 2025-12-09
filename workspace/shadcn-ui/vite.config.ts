@@ -12,7 +12,22 @@ function ensurePublicAssets() {
       const publicDir = path.resolve(__dirname, 'public');
       const distDir = path.resolve(__dirname, 'dist');
       
-      if (!existsSync(publicDir)) return;
+      console.log('[ensure-public-assets] Starting file copy...');
+      console.log(`[ensure-public-assets] Public dir: ${publicDir}`);
+      console.log(`[ensure-public-assets] Dist dir: ${distDir}`);
+      
+      if (!existsSync(publicDir)) {
+        console.warn('[ensure-public-assets] Public directory does not exist!');
+        return;
+      }
+      
+      if (!existsSync(distDir)) {
+        console.warn('[ensure-public-assets] Dist directory does not exist! Creating...');
+        mkdirSync(distDir, { recursive: true });
+      }
+      
+      let copiedCount = 0;
+      let skippedCount = 0;
       
       function copyRecursive(src: string, dest: string) {
         const entries = readdirSync(src, { withFileTypes: true });
@@ -27,15 +42,22 @@ function ensurePublicAssets() {
             }
             copyRecursive(srcPath, destPath);
           } else {
-            // Only copy if file doesn't exist or is different
-            if (!existsSync(destPath) || statSync(srcPath).size !== statSync(destPath).size) {
+            const srcStats = statSync(srcPath);
+            const needsCopy = !existsSync(destPath) || statSync(destPath).size !== srcStats.size;
+            
+            if (needsCopy) {
               copyFileSync(srcPath, destPath);
+              copiedCount++;
+              console.log(`[ensure-public-assets] Copied: ${path.relative(process.cwd(), destPath)} (${srcStats.size} bytes)`);
+            } else {
+              skippedCount++;
             }
           }
         }
       }
       
       copyRecursive(publicDir, distDir);
+      console.log(`[ensure-public-assets] Complete! Copied: ${copiedCount}, Skipped: ${skippedCount}`);
     },
   };
 }
