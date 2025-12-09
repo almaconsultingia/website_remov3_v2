@@ -19,5 +19,13 @@ export default defineConfig(({ mode }) => ({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  // Explicitly configure public directory to ensure assets are copied
+  publicDir: 'public',
+  build: {
+    // Assets from imports (JS/CSS) go to assets folder
+    assetsDir: 'assets',
+    // Ensure public directory is copied (this is default, but being explicit)
+    copyPublicDir: true,
+  },
 }));
 
