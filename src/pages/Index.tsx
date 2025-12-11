@@ -40,7 +40,7 @@ const texts = {
         {
           t: 'Readaptación',
           priceMonthly: '150 € /mes',
-          priceQuarterly: 'o bien 400 € trimestrales',
+          priceQuarterly: 'o bien 390 € trimestrales',
           quote: '“Volver a moverte sin dolor, con plan personalizado y seguimiento.”',
           features: [
             'Servicio 100% Online',
@@ -52,8 +52,8 @@ const texts = {
         },
         {
           t: 'Entrenamiento mujeres',
-          priceMonthly: '150 € /mes',
-          priceQuarterly: 'o bien 400 € trimestrales (Acceso total a la app)',
+          priceMonthly: '79 € /mes',
+          priceQuarterly: 'o bien 225 € trimestrales (Acceso total a la app)',
           quote: '“Entrenamientos guiados, programas, metodología y soporte comunitario.”',
           features: [
             'Acceso a la App 100% Online',
