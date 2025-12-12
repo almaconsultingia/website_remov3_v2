@@ -10,10 +10,9 @@ type Lang = 'es' | 'cat';
 
 const WHATSAPP_NUMBER_DISPLAY = '+34 664 89 20 20';
 const WHATSAPP_NUMBER_WA = '34664892020';
-const EMAIL = 'remov3@gmail.com';
-const RESERVAR_URL = 'https://calendly.com/demo-remov3';
+const EMAIL = 'almaxremov3@gmail.com';
 // Botón único de reserva para cualquier servicio (cal.com)
-const RESERVA_CAL_URL = 'https://cal.com/alma-consulting-ia-4rtsib/30min';
+const RESERVA_CAL_URL = 'https://cal.com/axrremov/reunion-45-minutos';
 
 const texts = {
   es: {
@@ -29,46 +28,62 @@ const texts = {
       title: 'RE:MOV3',
       subtitle: 'Readaptación y rendimiento',
       desc:
-        'Fisioterapia especializada en readaptación. Entrenos de Fuerza para mujeres y formación para profesionales.',
+        'El teu moviment, el teu ritme, la teva evolució.',
       cta: 'Reservar',
       whatsapp: 'WhatsApp',
     },
     tagline: 'Readaptación · Entrenamiento de fuerza · Formación',
     servicios: {
       title: 'Servicios online',
+      planMonthly: 'PLAN MENSUAL',
+      planQuarterly: 'PLAN TRIMESTRAL',
+      formacionTitle: 'FORMACIÓN',
+      monthToMonth: 'Mes a mes',
+      moreInfo: 'Más información',
+      moreInfoFormacion: 'Quiero más información sobre las formaciones',
       plans: [
         {
-          t: 'Readaptación',
-          priceMonthly: '150 € /mes',
-          priceQuarterly: 'o bien 400 € trimestrales',
-          quote: '“Volver a moverte sin dolor, con plan personalizado y seguimiento.”',
-          features: [
-            'Servicio 100% Online',
-            'Sesiones de 45 minutos',
-            'Plan totalmente personalizado',
-            'Seguimiento continuo del dolor',
-            'Readaptación funcional completa',
+          t: 'Readaptación 1:1',
+          priceMonthly: '150€',
+          priceQuarterly: '390€ (130€/mes)',
+          quote: 'Servicio premium 1:1 para lesiones de rodilla (LCA y menisco). Plan personalizado con seguimiento semanal.',
+          featuresMonthly: [
+            'Acompañamiento 1:1',
+            'Ajustes semanales',
+            'Videollamada quincenal',
+            'Corrección técnica',
+          ],
+          featuresQuarterly: [
+            'Todo lo del mensual',
+            'Re-test mensual',
+            'Informe de evolución',
+            'Plataforma educativa',
           ],
         },
         {
-          t: 'Entrenamiento mujeres',
-          priceMonthly: '150 € /mes',
-          priceQuarterly: 'o bien 400 € trimestrales (Acceso total a la app)',
-          quote: '“Entrenamientos guiados, programas, metodología y soporte comunitario.”',
-          features: [
-            'Acceso a la App 100% Online',
-            'Seguimiento cada 2 semanas',
-            'Entrenamientos guiados (vídeos + explicaciones)',
-            'Progressiones semanales según nivel',
-            'Rutinas: Fuerza, Core y Movilidad',
-            'Acceso a Comunidad Femenina',
-            'Evento Healthy (entrada gratuita/descuento)',
+          t: 'Membresía Women',
+          priceMonthly: '79€',
+          priceQuarterly: '225€ (75€/mes)',
+          quote: 'Entrenamiento híbrido, comunidad y recursos wellness para mujeres.',
+          featuresMonthly: [
+            'Entreno híbrido',
+            'Movilidad',
+            'Recursos wellness',
+            'Comunidad',
+          ],
+          featuresQuarterly: [
+            'Precio trimestral reducido',
+            'Mayor compromiso',
+            'Acceso completo',
+            'Soporte comunidad',
           ],
         },
         {
           t: 'Formación',
           soon: true,
           soonText: 'Próximamente',
+          quote: 'Formación para profesionales.',
+          features: ['Webinars en vivo', 'Workshops presenciales', 'Cápsulas On-Demand', 'Mentoría Pro'],
         },
       ],
       cta: 'Reservar cita',
@@ -117,9 +132,21 @@ const texts = {
     testimonios: {
       title: 'Testimonios',
       items: [
-        { t: 'Volví mejor que antes', d: 'Programa claro y medible. Sin miedo al volver a entrenar.' },
-        { t: 'Calidad y criterio', d: 'Se nota la experiencia en readaptación y el enfoque en fuerza.' },
-        { t: 'Acompañamiento excelente', d: 'Seguimiento constante y decisiones con criterio.' },
+        {
+          t: 'Anabel',
+          d:
+            'Empecé a trabajar con Adri aproximadamente 4 meses después de mi operación de LCA, apenas tenía fuerza en la pierna operada y tenía dificultades en acciones cotidianas. Gracias a su acompañamiento en los entrenamientos y en el proceso de recuperación he conseguido recuperar fuerza, movilidad y volver a hacer una vida y unos entrenamientos normales. Muchas gracias por todo!',
+        },
+        {
+          t: 'Joaquim',
+          d:
+            'Un buen profesional, siempre atento a las necesidades del cliente, con capacidad de adaptación a sus circunstancias cada día y que diseña un plan de trabajo progresivo hacia el objetivo. Gracias por la labor y el acompañamiento',
+        },
+        {
+          t: 'Jordi',
+          d:
+            'Después de un año trabajando con Adrià, sólo puedo tener palabras buenas. Es puntual, educado y se adapta siempre a lo que necesitas. Sus planes de entrenamiento son muy buenos y está a tu lado para asegurar que hagas cada ejercicio correctamente y evitar lesiones. Lo recomendaría sin dudar. Ha sido un placer entrenar con él.',
+        },
       ],
     },
     contacto: {
@@ -164,39 +191,55 @@ const texts = {
     tagline: 'Readaptació · Entrenament de força · Formació',
     servicios: {
       title: 'Serveis online',
+      planMonthly: 'PLAN MENSUAL',
+      planQuarterly: 'PLAN TRIMESTRAL',
+      formacionTitle: 'FORMACIÓ',
+      monthToMonth: 'Mes a mes',
+      moreInfo: 'Vull informació',
+      moreInfoFormacion: 'Vull més informació sobre les formacions',
       plans: [
         {
-          t: 'Readaptació',
-          priceMonthly: '150 € /mes',
-          priceQuarterly: 'o bé 400 € trimestrals',
-          quote: '“Tornar a moure’t sense dolor, amb pla personalitzat i seguiment.”',
-          features: [
-            'Servei 100% Online',
-            'Sessions de 45 minuts',
-            'Pla totalment personalitzat',
-            'Seguiment continu del dolor',
-            'Readaptació funcional completa',
+          t: 'Readaptació 1:1',
+          priceMonthly: '150€',
+          priceQuarterly: '390€ (130€/mes)',
+          quote: 'Servei premium 1:1 per a lesions de genoll (LCA i menisc). Pla personalitzat amb seguiment setmanal.',
+          featuresMonthly: [
+            'Acompanyament 1:1',
+            'Ajustos setmanals',
+            'Videotrucada quinzenal',
+            'Correcció tècnica',
+          ],
+          featuresQuarterly: [
+            'Tot el del mensual',
+            'Re-test mensual',
+            'Informe d\'evolució',
+            'Plataforma educativa',
           ],
         },
         {
-          t: 'Entrenament dones',
-          priceMonthly: '150 € /mes',
-          priceQuarterly: 'o bé 400 € trimestrals (Accés total aplicació)',
-          quote: '“Entrenaments guiats, programes, metodologia i suport comunitari.”',
-          features: [
-            "Accés a l'App 100% Online",
-            'Seguiment cada 2 setmanes',
-            'Entrenaments guiats (vídeos + explicacions)',
-            'Progressions setmanals segons nivell',
-            'Rutines: Força, Core i Mobilitat',
-            'Accés a Comunitat Femenina',
-            'Esdeveniment Healthy (entrada free/% red.)',
+          t: 'Membresía Women',
+          priceMonthly: '79€',
+          priceQuarterly: '225€ (75€/mes)',
+          quote: 'Entrenament híbrid, comunitat i recursos wellness per a dones.',
+          featuresMonthly: [
+            'Entreno híbrid',
+            'Movilitat',
+            'Recursos wellness',
+            'Comunitat',
+          ],
+          featuresQuarterly: [
+            'Preu trimestral reduït',
+            'Més compromís',
+            'Accés complet',
+            'Suport comunitat',
           ],
         },
         {
           t: 'Formació',
           soon: true,
           soonText: 'Pròximament',
+          quote: 'Formació per a professionals.',
+          features: ['Webinars en viu', 'Workshops presencials', 'Càpsules On-Demand', 'Mentoria Pro'],
         },
       ],
       cta: 'Reservar cita',
@@ -297,7 +340,14 @@ function IndexPage() {
       alert(t.contacto.required_msg);
       return;
     }
-    alert(lang === 'es' ? 'Mensaje enviado. Te contactaremos pronto.' : 'Missatge enviat. Et contactarem aviat.');
+    // Open mail client with prefilled subject and body
+    const subject = encodeURIComponent(lang === 'es' ? 'Nuevo mensaje · RE:MOV3' : 'Nou missatge · RE:MOV3');
+    const body = encodeURIComponent(
+      `${lang === 'es' ? 'Nombre' : 'Nom'}: ${form.nom}\n${lang === 'es' ? 'Email' : 'Email'}: ${form.email}\n${lang === 'es' ? 'Teléfono' : 'Telèfon'}: ${form.telefon}\n\n${form.missatge}`
+    );
+    // Use mailto to open user's email client
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    alert(lang === 'es' ? 'Mensaje listo para enviar en tu correo.' : "Missatge llest per enviar al teu correu.");
     setForm({ nom: '', email: '', telefon: '', missatge: '' });
   };
 
@@ -372,9 +422,12 @@ function IndexPage() {
               </button>
             </div>
 
-            <a href={RESERVAR_URL} target="_blank" rel="noreferrer" className="hidden md:inline-flex">
-              <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">{t.menu.reservar}</Button>
-            </a>
+            <Button
+              onClick={() => scrollToId('servicios')}
+              className="hidden md:inline-flex rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
+            >
+              {t.menu.reservar}
+            </Button>
 
             {/* Botón hamburguesa: sólo móvil ≤ md */}
             <button
@@ -485,9 +538,15 @@ function IndexPage() {
 
                 {/* Acciones útiles también en móvil */}
                 <li className="mt-1 flex gap-2 px-3">
-                  <a href={RESERVAR_URL} target="_blank" rel="noreferrer" className="flex-1">
-                    <Button className="w-full rounded-full bg-zinc-900 text-white hover:bg-zinc-800">{t.menu.reservar}</Button>
-                  </a>
+                    <Button
+                      onClick={() => {
+                        scrollToId('servicios');
+                        setMobileOpen(false);
+                      }}
+                      className="flex-1 w-full rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
+                    >
+                      {t.menu.reservar}
+                    </Button>
                   <a href={`https://wa.me/${WHATSAPP_NUMBER_WA}`} target="_blank" rel="noreferrer" className="flex-1">
                     <Button variant="outline" className="w-full rounded-full border-zinc-300 text-zinc-900 hover:bg-zinc-100">
                       WhatsApp
@@ -522,9 +581,9 @@ function IndexPage() {
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href={RESERVAR_URL} target="_blank" rel="noreferrer">
-                <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">{t.hero.cta}</Button>
-              </a>
+              <Button onClick={() => scrollToId('servicios')} className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">
+                {t.hero.cta}
+              </Button>
               <a href={`https://wa.me/${WHATSAPP_NUMBER_WA}`} target="_blank" rel="noreferrer">
                 <Button className="rounded-full bg-white border-2 border-zinc-300 text-zinc-900 hover:bg-zinc-100">
                   {t.hero.whatsapp}
@@ -569,62 +628,141 @@ function IndexPage() {
 
       <Separator className="container-max bg-zinc-200" />
 
-      {/* Servicios - 3 planes, sin botones individuales; botón único de reserva global */}
+      {/* Servicios - 3 planes con layout unificado en columnas */}
       <section id="servicios" className="bg-white">
         <div className="container-max py-14 md:py-20">
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900">{t.servicios.title}</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             {t.servicios.plans.map((p) => {
               const isSoon = (p as any).soon === true;
+              const planKey = (p as any).t.toLowerCase();
+              const isReadapt = planKey.includes('readapt');
+              const isMembresia = planKey.includes('membres') || planKey.includes('women');
+              const priceQuarterlyText = (p as any).priceQuarterly ?? '';
+              const priceQuarterlyMain = priceQuarterlyText.split('(')[0].trim();
+              const priceQuarterlySub = priceQuarterlyText.includes('(') ? '(' + priceQuarterlyText.split('(')[1] : '';
+
               return (
-                <Card key={p.t} className="bg-white border border-zinc-200 rounded-xl shadow-sm">
-                  <CardHeader>
-                    <CardTitle className="text-xl font-semibold text-zinc-900">{p.t}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {isSoon ? (
-                      <p className="text-zinc-700">{(p as any).soonText || (lang === 'es' ? 'Próximamente' : 'Pròximament')}</p>
-                    ) : (
-                      <>
-                        <div className="flex items-center gap-3">
-                          <div className="text-2xl font-bold text-zinc-900">{(p as any).priceMonthly}</div>
-                          <div className="text-sm text-zinc-600">{(p as any).priceQuarterly}</div>
-                        </div>
-                        <p className="text-zinc-700">{(p as any).quote}</p>
-                        <ul className="grid gap-2 text-zinc-700">
-                          {(p as any).features?.map((f: string) => (
-                            <li key={f} className="flex items-start gap-2">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="18"
-                                height="18"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="mt-0.5 text-zinc-700"
-                              >
-                                <path d="M20 6L9 17l-5-5" />
-                              </svg>
-                              <span>{f}</span>
-                            </li>
+                <div key={p.t} className="flex flex-col h-full">
+                  {/* Header section with fixed heights to ensure cards align */}
+                  <div className="mb-4">
+                    {/* Title - fixed height for all plans */}
+                    <div className="min-h-[4rem] mb-3 flex items-center justify-center">
+                      <h3 className="text-2xl md:text-3xl font-bold uppercase text-center tracking-widest">{p.t}</h3>
+                    </div>
+                    
+                    {/* Quote/Description - fixed height for all plans */}
+                    <div className="min-h-[4.5rem] flex items-center justify-center">
+                      {p.quote && (
+                        <p className="text-sm text-zinc-600 text-center">
+                          {(p as any).quote}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Two cards side by side for monthly and quarterly, or single card for Formación */}
+                  {isSoon ? (
+                    <Card className="flex flex-col border border-zinc-200 rounded-xl shadow-sm h-full flex-1 relative bg-white">
+                      <div className="absolute right-4 top-4 bg-zinc-900 text-white text-xs px-2 py-1 rounded">
+                        {(p as any).soonText}
+                      </div>
+                      <CardHeader className="text-center pb-4 min-h-[5rem] flex flex-col justify-end">
+                        <div className="text-xs font-semibold text-zinc-500 tracking-widest mb-2">{t.servicios.formacionTitle}</div>
+                      </CardHeader>
+                      <CardContent className="p-6 pt-0">
+                        <div className="border-t border-zinc-200 my-4" />
+                        <div className="flex flex-col gap-3 text-zinc-700">
+                          {(p as any).features?.map((f: string, idx: number) => (
+                            <div key={idx} className="flex items-center gap-2">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
+                              <span className="text-sm">{f}</span>
+                            </div>
                           ))}
-                        </ul>
-                      </>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    <div className="flex flex-col gap-3 flex-1">
+                      {/* Monthly Plan Card */}
+                      <Card className="flex flex-col border border-zinc-200 rounded-xl shadow-sm bg-white">
+                        <CardHeader className="text-center pb-4 min-h-[5rem] flex flex-col justify-end">
+                          <div className="mb-2">
+                            <span className="inline-block w-12 h-2 rounded bg-zinc-200" />
+                          </div>
+                          <div className="text-xs font-semibold text-zinc-500 tracking-widest">{t.servicios.planMonthly}</div>
+                        </CardHeader>
+                        <CardContent className="flex flex-col justify-between p-6 pt-0">
+                          <div className="min-h-[4.5rem] flex flex-col justify-center">
+                            <div className="text-3xl font-bold text-center text-zinc-900 mb-1">{(p as any).priceMonthly}</div>
+                            <div className="text-xs text-zinc-500 text-center">{t.servicios.monthToMonth}</div>
+                          </div>
+                          <div className="border-t border-zinc-200 my-4" />
+                          <div className="flex flex-col gap-3 text-zinc-700">
+                            {((p as any).featuresMonthly || []).map((f: string, idx: number) => (
+                              <div key={idx} className="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
+                                <span className="text-sm">{f}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      {/* Quarterly Plan Card - visually distinct */}
+                      <Card className="flex flex-col border-2 border-zinc-900 rounded-xl shadow-sm bg-zinc-50">
+                        <CardHeader className="text-center pb-4 min-h-[5rem] flex flex-col justify-end bg-zinc-900 rounded-t-xl">
+                          <div className="mb-2">
+                            <span className="inline-block w-12 h-2 rounded bg-white" />
+                          </div>
+                          <div className="text-xs font-semibold text-white tracking-widest">{t.servicios.planQuarterly}</div>
+                        </CardHeader>
+                        <CardContent className="flex flex-col justify-between p-6 pt-0">
+                          <div className="min-h-[4.5rem] flex flex-col justify-center">
+                            <div className="text-3xl font-bold text-center text-zinc-900 mb-1">{priceQuarterlyMain}</div>
+                            {priceQuarterlySub ? (
+                              <div className="text-xs text-center text-zinc-500">{priceQuarterlySub}</div>
+                            ) : (
+                              <div className="text-xs text-center text-zinc-500 opacity-0">{t.servicios.monthToMonth}</div>
+                            )}
+                          </div>
+                          <div className="border-t border-zinc-200 my-4" />
+                          <div className="flex flex-col gap-3 text-zinc-700">
+                            {((p as any).featuresQuarterly || []).map((f: string, idx: number) => (
+                              <div key={idx} className="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
+                                <span className="text-sm">{f}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  )}
+
+                  {/* Button - same position for all */}
+                  <div className="mt-6 flex justify-center">
+                    {isSoon ? (
+                      <Button
+                        onClick={() => {
+                          scrollToId('contacto');
+                          setForm({ ...form, missatge: t.servicios.moreInfoFormacion });
+                        }}
+                        className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
+                      >
+                        {t.servicios.moreInfo}
+                      </Button>
+                    ) : (
+                      <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
+                        <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">
+                          {t.menu.reservar}
+                        </Button>
+                      </a>
                     )}
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               );
             })}
-          </div>
-
-          {/* Botón único para reservar cualquier servicio (cal.com) */}
-          <div className="mt-10 flex justify-center">
-            <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
-              <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">{t.servicios.cta}</Button>
-            </a>
           </div>
         </div>
       </section>
@@ -663,9 +801,7 @@ function IndexPage() {
       {/* Testimonios - fondo blanco */}
       <section id="testimonios" className="bg-white text-zinc-900">
         <div className="container-max py-14 md:py-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">{
-            t.testimonios.title
-          }</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">{t.testimonios.title}</h2>
 
           <div className="grid gap-6 md:grid-cols-3">
             {t.testimonios.items.map((item) => (
@@ -701,14 +837,12 @@ function IndexPage() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-zinc-400"
+                        className="mt-0.5 text-zinc-700"
                       >
-                        <path d="M9 10h.01" />
-                        <path d="M15 10h.01" />
-                        <path d="M12 15c-2 0-3.5-1.5-3.5-3.5v-1.5h7v1.5c0 2-1.5 3.5-3.5 3.5z" />
+                        <path d="M21 10c0 6-9 13-9 13s-9-7-9-13a9 9 0 1 1 18 0z" />
                       </svg>
-                      <p className="leading-relaxed">{item.d}</p>
                     </div>
+                    <p className="text-zinc-700 mt-2">{item.d}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -719,61 +853,36 @@ function IndexPage() {
 
       <Separator className="container-max bg-zinc-200" />
 
-      {/* Contacto - fondo blanco */}
-      <section id="contacto" className="bg-white">
+      {/* Contacto */}
+      <section id="contacto" className="bg-zinc-50">
         <div className="container-max py-14 md:py-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900">{t.contacto.title}</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {/* Información */}
-            <Card className="bg-white border border-zinc-200 rounded-xl shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-zinc-900">{t.contacto.info_title}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6 p-6">
-                <p className="text-zinc-700">
-                  {t.contacto.lead}
-                </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">{t.contacto.title}</h2>
+          <p className="text-zinc-600 mb-8">{t.contacto.lead}</p>
 
-                <div className="flex items-start gap-3 text-zinc-800">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mt-0.5 text-zinc-700"
-                  >
-                    <path d="M21 10c0 6-9 13-9 13s-9-7-9-13a9 9 0 1 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  <div>
-                    <div className="font-medium">Carrer de la Pau, 123, 08000 Barcelona</div>
-                  </div>
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Información y otras vías */}
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-semibold text-zinc-900 mb-4">{t.contacto.info_title}</h3>
+                <p className="text-sm text-zinc-600 mb-4">{t.contacto.note}</p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-zinc-900 mb-4">{t.contacto.other_title}</h3>
+                <div className="flex flex-col gap-3">
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER_WA}`} target="_blank" rel="noreferrer">
+                    <Button variant="outline" className="w-full rounded-full border-zinc-300 text-zinc-900 hover:bg-zinc-100">
+                      {t.contacto.whatsapp_btn}
+                    </Button>
+                  </a>
+                  <a href={`mailto:${EMAIL}`}>
+                    <Button variant="outline" className="w-full rounded-full border-zinc-300 text-zinc-900 hover:bg-zinc-100">
+                      {t.contacto.email_btn}
+                    </Button>
+                  </a>
                 </div>
-
-                <Separator className="bg-zinc-200" />
-
-                <div>
-                  <div className="text-sm font-medium text-zinc-700">{t.contacto.other_title}</div>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    <a href={`https://wa.me/${WHATSAPP_NUMBER_WA}`} target="_blank" rel="noreferrer">
-                      <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">
-                        {t.contacto.whatsapp_btn}
-                      </Button>
-                    </a>
-                    <a href={`mailto:${EMAIL}`} target="_blank" rel="noreferrer">
-                      <Button variant="outline" className="rounded-full border-zinc-300 text-zinc-900 hover:bg-zinc-100">
-                        {t.contacto.email_btn}
-                      </Button>
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Formulario */}
             <Card className="bg-white border border-zinc-200 rounded-xl shadow-sm">
