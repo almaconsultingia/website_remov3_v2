@@ -8,8 +8,8 @@ import { Label } from '@/components/ui/label';
 
 type Lang = 'es' | 'cat';
 
-const WHATSAPP_NUMBER_DISPLAY = '+34 664 89 20 20';
-const WHATSAPP_NUMBER_WA = '34664892020';
+const WHATSAPP_NUMBER_DISPLAY = '+34 602 44 86 35';
+const WHATSAPP_NUMBER_WA = '34602448635';
 const EMAIL = 'almaxremov3@gmail.com';
 // Botón único de reserva para cualquier servicio (cal.com)
 const RESERVA_CAL_URL = 'https://cal.com/axrremov/reunion-45-minutos';
@@ -26,10 +26,10 @@ const texts = {
     },
     hero: {
       title: 'RE:MOV3',
-      subtitle: 'Readaptación y rendimiento',
+      subtitle: 'Readaptación · Entrenamento · Formación',
       desc:
-        'El teu moviment, el teu ritme, la teva evolució.',
-      cta: 'Reservar',
+        'Tu movimiento, tu ritmo, tu evolución.',
+      cta: 'Ver Servicios',
       whatsapp: 'WhatsApp',
     },
     tagline: 'Readaptación · Entrenamiento de fuerza · Formación',
@@ -48,16 +48,19 @@ const texts = {
           priceQuarterly: '390€ (130€/mes)',
           quote: 'Servicio premium 1:1 para lesiones de rodilla (LCA y menisco). Plan personalizado con seguimiento semanal.',
           featuresMonthly: [
-            'Acompañamiento 1:1',
-            'Ajustes semanales',
+            'Acompañamiento 1:1 100% online',
+            'Plan totalmente personalizado y adaptado',
+            'Protocolo completo por fases',
+            'Ajustes de carga semanales',
+            'Trabajo activo',
             'Videollamada quincenal',
             'Corrección técnica',
           ],
           featuresQuarterly: [
             'Todo lo del mensual',
-            'Re-test mensual',
-            'Informe de evolución',
-            'Plataforma educativa',
+            '+ Re-test mensual',
+            '+ Informe de evolución',
+            '+ Plataforma educativa',
           ],
         },
         {
@@ -140,7 +143,7 @@ const texts = {
         {
           t: 'Joaquim',
           d:
-            'Un buen profesional, siempre atento a las necesidades del cliente, con capacidad de adaptación a sus circunstancias cada día y que diseña un plan de trabajo progresivo hacia el objetivo. Gracias por la labor y el acompañamiento',
+            'Un buen profesional, siempre atento a las necesidades del cliente, con capacidad de adaptación a sus circunstancias cada día y que diseña un plan de trabajo progresivo hacia el objetivo. Gracias por la labor y el acompañamiento.',
         },
         {
           t: 'Jordi',
@@ -163,12 +166,11 @@ const texts = {
       note: `Número: ${WHATSAPP_NUMBER_DISPLAY} · Email: ${EMAIL}`,
     },
     footer: {
-      left_tagline: 'readaptación · entrenamiento mujeres · formación',
+      left_tagline: 'Readaptación · Entrenamiento mujeres · Formación',
       contacto: 'Contacto',
       rrss: 'RRSS',
       instagram: 'Instagram',
       copyright: '© 2025 RE:MOV3 · Adrià Vidal Noguera',
-      address: 'Carrer de la Pau, 123, 08000 Barcelona',
     },
   },
   cat: {
@@ -182,10 +184,10 @@ const texts = {
     },
     hero: {
       title: 'RE:MOV3',
-      subtitle: 'Readaptació i rendiment',
+      subtitle: 'Readaptació · Entrenament · Formació',
       desc:
-        'Fisioteràpia especialitzada en readaptació. Entrenaments de força per a dones i formació per a professionals.',
-      cta: 'Reservar',
+        'El teu moviment, el teu ritme, la teva evolució.',
+      cta: 'Veure Serveis',
       whatsapp: 'WhatsApp',
     },
     tagline: 'Readaptació · Entrenament de força · Formació',
@@ -205,15 +207,18 @@ const texts = {
           quote: 'Servei premium 1:1 per a lesions de genoll (LCA i menisc). Pla personalitzat amb seguiment setmanal.',
           featuresMonthly: [
             'Acompanyament 1:1',
-            'Ajustos setmanals',
+            'Pla totalment personalitzat i adaptado',
+            'Protocol complert per fases',
+            'Ajustos de carga setmanals',
+            'Treball actiu',
             'Videotrucada quinzenal',
             'Correcció tècnica',
           ],
           featuresQuarterly: [
             'Tot el del mensual',
-            'Re-test mensual',
-            'Informe d\'evolució',
-            'Plataforma educativa',
+            '+ Re-test mensual',
+            '+ Informe d\'evolució',
+            '+ Plataforma educativa',
           ],
         },
         {
@@ -288,9 +293,21 @@ const texts = {
     testimonios: {
       title: 'Testimonis',
       items: [
-        { t: 'Vaig tornar millor que abans', d: 'Programa clar i mesurable. Sense por al tornar a entrenar.' },
-        { t: 'Qualitat i criteri', d: "Es nota l'experiència en readaptació i l'enfoc en força." },
-        { t: 'Acompanyament excel·lent', d: 'Seguiment constant i decisions amb criteri.' },
+        {
+          t: 'Anabel',
+          d:
+            'Vaig començar a treballar amb Adri aproximadament 4 mesos després de la meva operació de LCA, amb prou feines tenia força a la cama operada i tenia dificultats en accions quotidianes. Gràcies al vostre acompanyament en els entrenaments i en el procés de recuperació he aconseguit recuperar força, mobilitat i tornar a fer una vida i uns entrenaments normals. Moltes gràcies per tot!',
+        },
+        {
+          t: 'Joaquim',
+          d:
+            'Un bon professional, sempre atent a les necessitats del client, amb capacitat d\'adaptació a les vostres circumstàncies cada dia i que dissenya un pla de treball progressiu cap a l\'objectiu. Gràcies per la feina i l\'acompanyament',
+        },
+        {
+          t: 'Jordi',
+          d:
+            'Després d\'un any treballant amb l\'Adrià, només puc tenir bones paraules. És puntual, educat i s\'adapta sempre a allò que necessites. Els seus plans d\'entrenament són molt bons i és al teu costat per assegurar que facis cada exercici correctament i evitar lesions. Ho recomanaria sense dubtar. Ha estat un plaer entrenar-s\'hi.',
+        },
       ],
     },
     contacto: {
@@ -307,12 +324,11 @@ const texts = {
       note: `Número: ${WHATSAPP_NUMBER_DISPLAY} · Email: ${EMAIL}`,
     },
     footer: {
-      left_tagline: 'readaptació · entrenament dones · formació',
+      left_tagline: 'Readaptació ·  Entrenament dones · Formació',
       contacto: 'Contacte',
       rrss: 'Xarxes',
       instagram: 'Instagram',
       copyright: '© 2025 RE:MOV3 · Adrià Vidal Noguera',
-      address: 'Carrer de la Pau, 123, 08000 Barcelona',
     },
   },
 } as const;
