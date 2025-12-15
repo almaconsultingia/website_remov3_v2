@@ -36,11 +36,13 @@ const texts = {
     servicios: {
       title: 'Servicios online',
       planMonthly: 'PLAN MENSUAL',
+      planPuntual: 'PLAN PUNTUAL',
       planQuarterly: 'PLAN TRIMESTRAL',
       formacionTitle: 'FORMACIÓN',
       monthToMonth: 'Mes a mes',
       moreInfo: 'Más información',
       moreInfoFormacion: 'Quiero más información sobre las formaciones',
+      comingSoon: 'Próximamente',
       plans: [
         {
           t: 'Readaptación 1:1',
@@ -83,10 +85,11 @@ const texts = {
         },
         {
           t: 'Formación',
-          soon: true,
-          soonText: 'Próximamente',
+          pricePuntual: '0€',
+          priceQuarterly: '0€ (0€/mes)',
           quote: 'Formación para profesionales.',
-          features: ['Webinars en vivo', 'Workshops presenciales', 'Cápsulas On-Demand', 'Mentoría Pro'],
+          featuresPuntual: ['Webinars en vivo', 'Workshops presenciales', 'Cápsulas On-Demand', 'Mentoría Pro'],
+          featuresQuarterly: [],
         },
       ],
       cta: 'Reservar cita',
@@ -171,6 +174,7 @@ const texts = {
       rrss: 'RRSS',
       instagram: 'Instagram',
       copyright: '© 2025 RE:MOV3 · Adrià Vidal Noguera',
+      address: 'Carrer de la Pau, 123, 08000 Barcelona',
     },
   },
   cat: {
@@ -193,12 +197,14 @@ const texts = {
     tagline: 'Readaptació · Entrenament de força · Formació',
     servicios: {
       title: 'Serveis online',
-      planMonthly: 'PLAN MENSUAL',
-      planQuarterly: 'PLAN TRIMESTRAL',
+      planMonthly: 'PLA MENSUAL',
+      planPuntual: 'PLA PUNTUAL',
+      planQuarterly: 'PLA TRIMESTRAL',
       formacionTitle: 'FORMACIÓ',
       monthToMonth: 'Mes a mes',
       moreInfo: 'Vull informació',
       moreInfoFormacion: 'Vull més informació sobre les formacions',
+      comingSoon: 'Pròximament',
       plans: [
         {
           t: 'Readaptació 1:1',
@@ -241,10 +247,11 @@ const texts = {
         },
         {
           t: 'Formació',
-          soon: true,
-          soonText: 'Pròximament',
+          pricePuntual: '0€',
+          priceQuarterly: '0€ (0€/mes)',
           quote: 'Formació per a professionals.',
-          features: ['Webinars en viu', 'Workshops presencials', 'Càpsules On-Demand', 'Mentoria Pro'],
+          featuresPuntual: ['Webinars en viu', 'Workshops presencials', 'Càpsules On-Demand', 'Mentoria Pro'],
+          featuresQuarterly: [],
         },
       ],
       cta: 'Reservar cita',
@@ -295,18 +302,15 @@ const texts = {
       items: [
         {
           t: 'Anabel',
-          d:
-            'Vaig començar a treballar amb Adri aproximadament 4 mesos després de la meva operació de LCA, amb prou feines tenia força a la cama operada i tenia dificultats en accions quotidianes. Gràcies al vostre acompanyament en els entrenaments i en el procés de recuperació he aconseguit recuperar força, mobilitat i tornar a fer una vida i uns entrenaments normals. Moltes gràcies per tot!',
+          d: `Vaig començar a treballar amb Adri aproximadament 4 mesos després de la meva operació de LCA, amb prou feines tenia força a la cama operada i tenia dificultats en accions quotidianes. Gràcies al vostre acompanyament en els entrenaments i en el procés de recuperació he aconseguit recuperar força, mobilitat i tornar a fer una vida i uns entrenaments normals. Moltes gràcies per tot!`,
         },
         {
           t: 'Joaquim',
-          d:
-            'Un bon professional, sempre atent a les necessitats del client, amb capacitat d\'adaptació a les vostres circumstàncies cada dia i que dissenya un pla de treball progressiu cap a l\'objectiu. Gràcies per la feina i l\'acompanyament',
+          d: `Un bon professional, sempre atent a les necessitats del client, amb capacitat d'adaptació a les vostres circumstàncies cada dia i que dissenya un pla de treball progressiu cap a l'objectiu. Gràcies per la feina i l'acompanyament`,
         },
         {
           t: 'Jordi',
-          d:
-            'Després d\'un any treballant amb l\'Adrià, només puc tenir bones paraules. És puntual, educat i s\'adapta sempre a allò que necessites. Els seus plans d\'entrenament són molt bons i és al teu costat per assegurar que facis cada exercici correctament i evitar lesions. Ho recomanaria sense dubtar. Ha estat un plaer entrenar-s\'hi.',
+          d: `Després d'un any treballant amb l'Adrià, només puc tenir bones paraules. És puntual, educat i s'adapta sempre a allò que necessites. Els seus plans d'entrenament són molt bons i és al teu costat per assegurar que facis cada exercici correctament i evitar lesions. Ho recomanaria sense dubtar. Ha estat un plaer entrenar-s'hi.`,
         },
       ],
     },
@@ -329,6 +333,7 @@ const texts = {
       rrss: 'Xarxes',
       instagram: 'Instagram',
       copyright: '© 2025 RE:MOV3 · Adrià Vidal Noguera',
+      address: 'Carrer de la Pau, 123, 08000 Barcelona',
     },
   },
 } as const;
@@ -442,7 +447,7 @@ function IndexPage() {
               onClick={() => scrollToId('servicios')}
               className="hidden md:inline-flex rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
             >
-              {t.menu.reservar}
+              {t.hero.cta}
             </Button>
 
             {/* Botón hamburguesa: sólo móvil ≤ md */}
@@ -648,138 +653,174 @@ function IndexPage() {
       <section id="servicios" className="bg-white">
         <div className="container-max py-14 md:py-20">
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900">{t.servicios.title}</h2>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {t.servicios.plans.map((p) => {
-              const isSoon = (p as any).soon === true;
-              const planKey = (p as any).t.toLowerCase();
-              const isReadapt = planKey.includes('readapt');
-              const isMembresia = planKey.includes('membres') || planKey.includes('women');
-              const priceQuarterlyText = (p as any).priceQuarterly ?? '';
-              const priceQuarterlyMain = priceQuarterlyText.split('(')[0].trim();
-              const priceQuarterlySub = priceQuarterlyText.includes('(') ? '(' + priceQuarterlyText.split('(')[1] : '';
+          {(() => {
+            // Calculate global maxFeatures across ALL services to ensure alignment
+            const globalMaxFeatures = Math.max(
+              ...t.servicios.plans.map((p) => {
+                const planKey = (p as any).t.toLowerCase();
+                const isFormacion = planKey.includes('formació') || planKey.includes('formación');
+                const firstPlanFeatures = isFormacion ? (p as any).featuresPuntual : (p as any).featuresMonthly;
+                return Math.max(
+                  (firstPlanFeatures || []).length,
+                  ((p as any).featuresQuarterly || []).length
+                );
+              })
+            );
+
+            return (
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                {t.servicios.plans.map((p) => {
+                  const planKey = (p as any).t.toLowerCase();
+                  const isFormacion = planKey.includes('formació') || planKey.includes('formación');
+                  const isReadapt = planKey.includes('readapt');
+                  const isMembresia = planKey.includes('membres') || planKey.includes('women');
+                  
+                  // Determine which plan type to use (puntual for Formación, monthly for others)
+                  const firstPlanPrice = isFormacion ? (p as any).pricePuntual : (p as any).priceMonthly;
+                  const firstPlanFeatures = isFormacion ? (p as any).featuresPuntual : (p as any).featuresMonthly;
+                  const firstPlanLabel = isFormacion ? t.servicios.planPuntual : t.servicios.planMonthly;
+                  const firstPlanSubtext = isFormacion ? '' : t.servicios.monthToMonth;
+                  
+                  const priceQuarterlyText = (p as any).priceQuarterly ?? '';
+                  const priceQuarterlyMain = priceQuarterlyText.split('(')[0].trim();
+                  const priceQuarterlySub = priceQuarterlyText.includes('(') ? '(' + priceQuarterlyText.split('(')[1] : '';
 
               return (
                 <div key={p.t} className="flex flex-col h-full">
                   {/* Header section with fixed heights to ensure cards align */}
                   <div className="mb-4">
-                    {/* Title - fixed height for all plans */}
-                    <div className="min-h-[4rem] mb-3 flex items-center justify-center">
+                    {/* Title - fixed height for all plans, aligned at top (guaranteed same starting position) */}
+                    <div className="h-[4rem] mb-3 flex items-start justify-center">
                       <h3 className="text-2xl md:text-3xl font-bold uppercase text-center tracking-widest">{p.t}</h3>
                     </div>
                     
-                    {/* Quote/Description - fixed height for all plans */}
-                    <div className="min-h-[4.5rem] flex items-center justify-center">
-                      {p.quote && (
-                        <p className="text-sm text-zinc-600 text-center">
+                    {/* Quote/Description - fixed height for all plans, centered horizontally and vertically */}
+                    <div className="h-[4.5rem] flex items-center justify-center">
+                      {p.quote ? (
+                        <p className="text-base text-zinc-600 text-center">
                           {(p as any).quote}
                         </p>
+                      ) : (
+                        <div className="opacity-0 text-base text-zinc-600 text-center">Placeholder</div>
                       )}
                     </div>
                   </div>
 
-                  {/* Two cards side by side for monthly and quarterly, or single card for Formación */}
-                  {isSoon ? (
-                    <Card className="flex flex-col border border-zinc-200 rounded-xl shadow-sm h-full flex-1 relative bg-white">
-                      <div className="absolute right-4 top-4 bg-zinc-900 text-white text-xs px-2 py-1 rounded">
-                        {(p as any).soonText}
-                      </div>
+                  {/* Two cards: first plan (puntual/monthly) and quarterly */}
+                  <div className="flex flex-col gap-3 flex-1">
+                    {/* First Plan Card (Puntual for Formación, Monthly for others) */}
+                    <Card className="flex flex-col border border-zinc-200 rounded-xl shadow-sm bg-white">
                       <CardHeader className="text-center pb-4 min-h-[5rem] flex flex-col justify-end">
-                        <div className="text-xs font-semibold text-zinc-500 tracking-widest mb-2">{t.servicios.formacionTitle}</div>
+                        <div className="mb-2">
+                          <span className="inline-block w-12 h-2 rounded bg-zinc-200" />
+                        </div>
+                        <div className="text-xs font-semibold text-zinc-500 tracking-widest">{firstPlanLabel}</div>
                       </CardHeader>
-                      <CardContent className="p-6 pt-0">
+                      <CardContent className="flex flex-col justify-between p-6 pt-0">
+                        <div className="min-h-[4.5rem] flex flex-col justify-center">
+                          {isFormacion ? (
+                            <div className="flex justify-center">
+                              <span className="inline-block px-4 py-2 bg-zinc-100 border-2 border-zinc-600 rounded-full text-sm font-semibold text-zinc-700 uppercase tracking-wider">
+                                {t.servicios.comingSoon}
+                              </span>
+                            </div>
+                          ) : (
+                            <>
+                              <div className="text-3xl font-bold text-center text-zinc-900 mb-1">{firstPlanPrice}</div>
+                              {firstPlanSubtext && (
+                                <div className="text-xs text-zinc-500 text-center">{firstPlanSubtext}</div>
+                              )}
+                            </>
+                          )}
+                        </div>
                         <div className="border-t border-zinc-200 my-4" />
                         <div className="flex flex-col gap-3 text-zinc-700">
-                          {(p as any).features?.map((f: string, idx: number) => (
-                            <div key={idx} className="flex items-center gap-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
-                              <span className="text-sm">{f}</span>
-                            </div>
-                          ))}
+                          {Array.from({ length: globalMaxFeatures }).map((_, idx: number) => {
+                            const feature = (firstPlanFeatures || [])[idx];
+                            return (
+                              <div key={idx} className="min-h-[1.75rem] flex items-center gap-2">
+                                {feature ? (
+                                  <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
+                                    <span className="text-sm">{feature}</span>
+                                  </>
+                                ) : (
+                                  <div className="opacity-0 h-[1.75rem]">Placeholder</div>
+                                )}
+                              </div>
+                            );
+                          })}
                         </div>
                       </CardContent>
                     </Card>
-                  ) : (
-                    <div className="flex flex-col gap-3 flex-1">
-                      {/* Monthly Plan Card */}
-                      <Card className="flex flex-col border border-zinc-200 rounded-xl shadow-sm bg-white">
-                        <CardHeader className="text-center pb-4 min-h-[5rem] flex flex-col justify-end">
-                          <div className="mb-2">
-                            <span className="inline-block w-12 h-2 rounded bg-zinc-200" />
-                          </div>
-                          <div className="text-xs font-semibold text-zinc-500 tracking-widest">{t.servicios.planMonthly}</div>
-                        </CardHeader>
-                        <CardContent className="flex flex-col justify-between p-6 pt-0">
-                          <div className="min-h-[4.5rem] flex flex-col justify-center">
-                            <div className="text-3xl font-bold text-center text-zinc-900 mb-1">{(p as any).priceMonthly}</div>
-                            <div className="text-xs text-zinc-500 text-center">{t.servicios.monthToMonth}</div>
-                          </div>
-                          <div className="border-t border-zinc-200 my-4" />
-                          <div className="flex flex-col gap-3 text-zinc-700">
-                            {((p as any).featuresMonthly || []).map((f: string, idx: number) => (
-                              <div key={idx} className="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
-                                <span className="text-sm">{f}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
 
-                      {/* Quarterly Plan Card - visually distinct */}
-                      <Card className="flex flex-col border-2 border-zinc-900 rounded-xl shadow-sm bg-zinc-50">
-                        <CardHeader className="text-center pb-4 min-h-[5rem] flex flex-col justify-end bg-zinc-900 rounded-t-xl">
-                          <div className="mb-2">
-                            <span className="inline-block w-12 h-2 rounded bg-white" />
-                          </div>
-                          <div className="text-xs font-semibold text-white tracking-widest">{t.servicios.planQuarterly}</div>
-                        </CardHeader>
-                        <CardContent className="flex flex-col justify-between p-6 pt-0">
-                          <div className="min-h-[4.5rem] flex flex-col justify-center">
-                            <div className="text-3xl font-bold text-center text-zinc-900 mb-1">{priceQuarterlyMain}</div>
-                            {priceQuarterlySub ? (
-                              <div className="text-xs text-center text-zinc-500">{priceQuarterlySub}</div>
-                            ) : (
-                              <div className="text-xs text-center text-zinc-500 opacity-0">{t.servicios.monthToMonth}</div>
-                            )}
-                          </div>
-                          <div className="border-t border-zinc-200 my-4" />
-                          <div className="flex flex-col gap-3 text-zinc-700">
-                            {((p as any).featuresQuarterly || []).map((f: string, idx: number) => (
-                              <div key={idx} className="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
-                                <span className="text-sm">{f}</span>
+                    {/* Quarterly Plan Card - visually distinct */}
+                    <Card className="flex flex-col border-2 border-zinc-900 rounded-xl shadow-sm bg-zinc-50">
+                      <CardHeader className="text-center pb-4 min-h-[5rem] flex flex-col justify-end bg-zinc-900 rounded-t-xl">
+                        <div className="mb-2">
+                          <span className="inline-block w-12 h-2 rounded bg-white" />
+                        </div>
+                        <div className="text-xs font-semibold text-white tracking-widest">{t.servicios.planQuarterly}</div>
+                      </CardHeader>
+                      <CardContent className="flex flex-col justify-between p-6 pt-0">
+                        <div className="min-h-[4.5rem] flex flex-col justify-center">
+                          {isFormacion ? (
+                            <div className="flex justify-center">
+                              <span className="inline-block px-4 py-2 bg-zinc-100 border-2 border-zinc-600 rounded-full text-sm font-semibold text-zinc-700 uppercase tracking-wider">
+                                {t.servicios.comingSoon}
+                              </span>
+                            </div>
+                          ) : (
+                            <>
+                              <div className="text-3xl font-bold text-center text-zinc-900 mb-1">{priceQuarterlyMain}</div>
+                              {priceQuarterlySub ? (
+                                <div className="text-xs text-center text-zinc-500">{priceQuarterlySub}</div>
+                              ) : (
+                                <div className="text-xs text-center text-zinc-500 opacity-0">{t.servicios.monthToMonth}</div>
+                              )}
+                            </>
+                          )}
+                        </div>
+                        <div className="border-t border-zinc-200 my-4" />
+                        <div className="flex flex-col gap-3 text-zinc-700">
+                          {Array.from({ length: globalMaxFeatures }).map((_, idx: number) => {
+                            const feature = ((p as any).featuresQuarterly || [])[idx];
+                            return (
+                              <div key={idx} className="min-h-[1.75rem] flex items-center gap-2">
+                                {isFormacion && feature ? (
+                                  <span className="inline-block px-3 py-1 bg-zinc-100 border-2 border-zinc-600 rounded-full text-xs font-semibold text-zinc-700 uppercase tracking-wider">
+                                    {t.servicios.comingSoon}
+                                  </span>
+                                ) : feature ? (
+                                  <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
+                                    <span className="text-sm">{feature}</span>
+                                  </>
+                                ) : (
+                                  <div className="opacity-0 h-[1.75rem]">Placeholder</div>
+                                )}
                               </div>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  )}
+                            );
+                          })}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
 
                   {/* Button - same position for all */}
                   <div className="mt-6 flex justify-center">
-                    {isSoon ? (
-                      <Button
-                        onClick={() => {
-                          scrollToId('contacto');
-                          setForm({ ...form, missatge: t.servicios.moreInfoFormacion });
-                        }}
-                        className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
-                      >
-                        {t.servicios.moreInfo}
+                    <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
+                      <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">
+                        {t.menu.reservar}
                       </Button>
-                    ) : (
-                      <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
-                        <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">
-                          {t.menu.reservar}
-                        </Button>
-                      </a>
-                    )}
+                    </a>
                   </div>
                 </div>
               );
             })}
-          </div>
+              </div>
+            );
+          })()}
         </div>
       </section>
 
