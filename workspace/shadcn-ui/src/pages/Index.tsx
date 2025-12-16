@@ -808,12 +808,24 @@ function IndexPage() {
                   </div>
 
                   {/* Button - same position for all */}
-                  <div className="mt-6 flex justify-center">
-                    <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
-                      <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">
-                        {t.menu.reservar}
+                  <div className="mt-6 flex justify-center">       
+                    {isFormacion ? (
+                      <Button
+                        onClick={() => {
+                          scrollToId('contacto');
+                          setForm({ ...form, missatge: t.servicios.moreInfoFormacion });
+                        }}
+                        className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
+                      >
+                        {t.servicios.moreInfo}
                       </Button>
-                    </a>
+                    ) : (
+                      <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
+                        <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">
+                          {t.menu.reservar}
+                        </Button>
+                      </a>
+                    )}
                   </div>
                 </div>
               );
