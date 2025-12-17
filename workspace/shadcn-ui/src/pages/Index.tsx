@@ -173,7 +173,7 @@ const texts = {
       contacto: 'Contacto',
       rrss: 'RRSS',
       instagram: 'Instagram',
-      copyright: '© 2025 RE:MOV3 · Adrià Vidal Noguera',
+      copyright: `© ${new Date().getFullYear()} RE:MOV3 · Adrià Vidal Noguera`,
       address: 'Carrer de la Pau, 123, 08000 Barcelona',
     },
   },
@@ -332,7 +332,7 @@ const texts = {
       contacto: 'Contacte',
       rrss: 'Xarxes',
       instagram: 'Instagram',
-      copyright: '© 2025 RE:MOV3 · Adrià Vidal Noguera',
+      copyright: `© ${new Date().getFullYear()} RE:MOV3 · Adrià Vidal Noguera`,
       address: 'Carrer de la Pau, 123, 08000 Barcelona',
     },
   },
@@ -492,9 +492,9 @@ function IndexPage() {
             id="mobile-menu"
             role="menu"
             aria-label="Menú principal"
-            className="md:hidden border-t border-zinc-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85"
+            className="md:hidden fixed inset-x-0 top-[64px] z-50 border-t border-zinc-200 bg-white"
           >
-            <div className="container-max py-2">
+            <div className="container-max py-4">
               <ul className="flex flex-col gap-1">
                 <li>
                   <button
@@ -556,25 +556,38 @@ function IndexPage() {
                     {t.menu.contacto}
                   </button>
                 </li>
+              </ul>
 
-                {/* Acciones útiles también en móvil */}
-                <li className="mt-1 flex gap-2 px-3">
-                    <Button
-                      onClick={() => {
-                        scrollToId('servicios');
-                        setMobileOpen(false);
-                      }}
-                      className="flex-1 w-full rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
-                    >
-                      {t.menu.reservar}
-                    </Button>
-                  <a href={`https://wa.me/${WHATSAPP_NUMBER_WA}`} target="_blank" rel="noreferrer" className="flex-1">
+              <div className="mt-4 grid gap-3">
+                {/* Language segmented control */}
+                <div className="flex w-full rounded-full border border-zinc-200 overflow-hidden">
+                  <button
+                    aria-pressed={lang === 'es'}
+                    onClick={() => { setLang('es'); setMobileOpen(false); }}
+                    className={`w-1/2 py-3 text-sm font-medium transition-colors ${lang === 'es' ? 'bg-zinc-900 text-white' : 'bg-white text-zinc-700'}`}
+                  >
+                    ES
+                  </button>
+                  <button
+                    aria-pressed={lang === 'cat'}
+                    onClick={() => { setLang('cat'); setMobileOpen(false); }}
+                    className={`w-1/2 py-3 text-sm font-medium transition-colors ${lang === 'cat' ? 'bg-zinc-900 text-white' : 'bg-white text-zinc-700'}`}
+                  >
+                    CAT
+                  </button>
+                </div>
+
+                <div className="grid gap-3">
+                  <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
+                    <Button className="w-full rounded-full bg-zinc-900 text-white hover:bg-zinc-800">{t.menu.reservar}</Button>
+                  </a>
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER_WA}`} target="_blank" rel="noreferrer">
                     <Button variant="outline" className="w-full rounded-full border-zinc-300 text-zinc-900 hover:bg-zinc-100">
                       WhatsApp
                     </Button>
                   </a>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -627,7 +640,7 @@ function IndexPage() {
               {t.quien.content.map((para, idx) => (
                 <p
                   key={idx}
-                  className={`${idx === 0 ? 'text-zinc-700 text-base md:text-lg' : 'text-zinc-600 text-sm md:text-base'} leading-relaxed ${idx > 0 ? 'mt-4' : ''}`}
+                  className="text-zinc-600 text-sm md:text-base leading-relaxed mt-4"
                 >
                   {para}
                 </p>
@@ -720,7 +733,7 @@ function IndexPage() {
                         <div className="min-h-[4.5rem] flex flex-col justify-center">
                           {isFormacion ? (
                             <div className="flex justify-center">
-                              <span className="inline-block px-4 py-2 bg-zinc-100 border-2 border-zinc-600 rounded-full text-sm font-semibold text-zinc-700 uppercase tracking-wider">
+                              <span className="inline-block px-4 py-2 bg-zinc-100 border-2 border-zinc-600 text-sm font-semibold text-zinc-700 uppercase tracking-wider">
                                 {t.servicios.comingSoon}
                               </span>
                             </div>
@@ -766,7 +779,7 @@ function IndexPage() {
                         <div className="min-h-[4.5rem] flex flex-col justify-center">
                           {isFormacion ? (
                             <div className="flex justify-center">
-                              <span className="inline-block px-4 py-2 bg-zinc-100 border-2 border-zinc-600 rounded-full text-sm font-semibold text-zinc-700 uppercase tracking-wider">
+                              <span className="inline-block px-4 py-2 bg-zinc-100 border-2 border-zinc-600 text-sm font-semibold text-zinc-700 uppercase tracking-wider">
                                 {t.servicios.comingSoon}
                               </span>
                             </div>
@@ -1058,7 +1071,6 @@ function IndexPage() {
                   {EMAIL}
                 </a>
               </li>
-              <li>{lang === 'es' ? texts.es.footer.address : texts.cat.footer.address}</li>
             </ul>
           </div>
           <div>
