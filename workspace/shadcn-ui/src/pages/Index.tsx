@@ -62,7 +62,6 @@ const texts = {
             'Todo lo del mensual',
             '+ Re-test mensual',
             '+ Informe de evolución',
-            '+ Plataforma educativa',
           ],
         },
         {
@@ -127,11 +126,10 @@ const texts = {
     quien: {
       title: 'Quién soy',
       content: [
-        'Más de 7 años dedicados al entrenamiento y la readaptación. Especializado en recuperación de lesiones y entrenamiento de fuerza para mujeres.',
-        'Mis propias lesiones graves me enseñaron lo que ningún máster explica: los protocolos estándar no funcionan. La recuperación real necesita un plan personalizado que vaya más allá de lo físico.',
-        'Porque volver de una lesión no es solo recuperar fuerza o movilidad.',
-        'Es recuperar la confianza. Perder el miedo. Sentir que tu cuerpo vuelve a ser tuyo.',
-        'En RE:MOV3 ofrezco lo que yo hubiera querido tener en mis peores momentos: un plan claro, progresivo y adaptado a ti. Físico, funcional y mental.',
+        'Llevo más de 7 años trabajando en entrenamiento y readaptación. Estoy especializado en recuperación de lesiones y entrenamiento de fuerza para mujeres.',
+        'Mi forma de trabajar nace tanto de la formación como de la experiencia personal. Haber pasado por lesiones graves me enseñó algo que ningún máster explica: los protocolos estándar no siempre funcionan.',
+        'La recuperación real necesita un plan personalizado que vaya más allá de lo físico. No se trata solo de recuperar fuerza o movilidad, sino de volver a confiar en el cuerpo y perder el miedo a moverse.',
+        'En RE:MOVE3 acompaño procesos de readaptación de forma clara y progresiva, adaptándome a cada persona desde una perspectiva física, funcional y mental.',
         'Readaptación real. Resultados reales. Acompañamiento humano.',
       ],
     },
@@ -166,7 +164,10 @@ const texts = {
       labels: { nombre: 'Nombre*', email: 'Email*', telefono: 'Teléfono', mensaje: 'Mensaje*' },
       submit_btn: 'Enviar mensaje',
       required_msg: 'Por favor, completa los campos requeridos (*)',
-      note: `Número: ${WHATSAPP_NUMBER_DISPLAY} · Email: ${EMAIL}`,
+      note: {
+        number: `Número: ${WHATSAPP_NUMBER_DISPLAY}`,
+        email: `Email: ${EMAIL}`,
+      }
     },
     footer: {
       left_tagline: 'Readaptación · Entrenamiento mujeres · Formación',
@@ -224,7 +225,6 @@ const texts = {
             'Tot el del mensual',
             '+ Re-test mensual',
             '+ Informe d\'evolució',
-            '+ Plataforma educativa',
           ],
         },
         {
@@ -325,7 +325,10 @@ const texts = {
       labels: { nombre: 'Nom*', email: 'Email*', telefono: 'Telèfon', mensaje: 'Missatge*' },
       submit_btn: 'Enviar missatge',
       required_msg: 'Si us plau, completa els camps requerits (*)',
-      note: `Número: ${WHATSAPP_NUMBER_DISPLAY} · Email: ${EMAIL}`,
+      note: {
+        number: `Número: ${WHATSAPP_NUMBER_DISPLAY}`,
+        email: `Email: ${EMAIL}`,
+      }
     },
     footer: {
       left_tagline: 'Readaptació ·  Entrenament dones · Formació',
@@ -378,9 +381,9 @@ function IndexPage() {
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-zinc-200">
         <div className="container-max flex items-center gap-4 py-3">
           {/* Logo + tagline */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col ">
             <div className="font-bold tracking-tight text-lg md:text-xl text-zinc-900">RE:MOV3</div>
-            <div className="hidden md:block text-xs md:text-sm text-zinc-500">{t.tagline}</div>
+            <div className="hidden md:block text-xs  text-zinc-500">{t.tagline}</div>
           </div>
 
           {/* Desktop menu: orden solicitado */}
@@ -634,13 +637,13 @@ function IndexPage() {
       <section id="quien" className="bg-zinc-50 text-zinc-900">
         <div className="container-max py-14 md:py-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">{t.quien.title}</h2>
-          <div className="grid gap-8 md:grid-cols-2 items-center">
+          <div className="grid gap-8 md:grid-cols-2 items-start">
             {/* Izquierda: descripción basada en idioma */}
-            <div>
+            <div className="h-[420px] md:h-[520px] flex flex-col justify-around">
               {t.quien.content.map((para, idx) => (
                 <p
                   key={idx}
-                  className="text-zinc-600 text-sm md:text-base leading-relaxed mt-4"
+                  className="text-zinc-600 text-sm md:text-base leading-relaxed"
                 >
                   {para}
                 </p>
@@ -673,15 +676,18 @@ function IndexPage() {
                 const planKey = (p as any).t.toLowerCase();
                 const isFormacion = planKey.includes('formació') || planKey.includes('formación');
                 const firstPlanFeatures = isFormacion ? (p as any).featuresPuntual : (p as any).featuresMonthly;
-                return Math.max(
-                  (firstPlanFeatures || []).length,
-                  ((p as any).featuresQuarterly || []).length
-                );
+                return (firstPlanFeatures || []).length;
+              })
+            );
+            
+            const quarterlyGlobalMaxFeatures = Math.max(
+              ...t.servicios.plans.map((p) => {
+                return ((p as any).featuresQuarterly || []).length;
               })
             );
 
             return (
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 {t.servicios.plans.map((p) => {
                   const planKey = (p as any).t.toLowerCase();
                   const isFormacion = planKey.includes('formació') || planKey.includes('formación');
@@ -720,16 +726,13 @@ function IndexPage() {
                   </div>
 
                   {/* Two cards: first plan (puntual/monthly) and quarterly */}
-                  <div className="flex flex-col gap-3 flex-1">
+                  <div className="flex flex-col gap-3 flex-1 min-h-0">
                     {/* First Plan Card (Puntual for Formación, Monthly for others) */}
                     <Card className="flex flex-col border border-zinc-200 rounded-xl shadow-sm bg-white">
-                      <CardHeader className="text-center pb-4 min-h-[5rem] flex flex-col justify-end">
-                        <div className="mb-2">
-                          <span className="inline-block w-12 h-2 rounded bg-zinc-200" />
-                        </div>
-                        <div className="text-xs font-semibold text-zinc-500 tracking-widest">{firstPlanLabel}</div>
+                      <CardHeader className="text-center min-h-[4rem] flex flex-col justify-end bg-zinc-100 rounded-t-xl">
+                        <div className="text-[11px] font-semibold text-zinc-700 tracking-widest">{firstPlanLabel}</div>
                       </CardHeader>
-                      <CardContent className="flex flex-col justify-between p-6 pt-0">
+                      <CardContent className="flex flex-col p-6 pt-0">
                         <div className="min-h-[4.5rem] flex flex-col justify-center">
                           {isFormacion ? (
                             <div className="flex justify-center">
@@ -769,13 +772,10 @@ function IndexPage() {
 
                     {/* Quarterly Plan Card - visually distinct */}
                     <Card className="flex flex-col border-2 border-zinc-900 rounded-xl shadow-sm bg-zinc-50">
-                      <CardHeader className="text-center pb-4 min-h-[5rem] flex flex-col justify-end bg-zinc-900 rounded-t-xl">
-                        <div className="mb-2">
-                          <span className="inline-block w-12 h-2 rounded bg-white" />
-                        </div>
-                        <div className="text-xs font-semibold text-white tracking-widest">{t.servicios.planQuarterly}</div>
+                      <CardHeader className="text-center min-h-[4rem] flex flex-col justify-end bg-zinc-900 rounded-t-xl">
+                        <div className="text-[11px] font-semibold text-white tracking-widest">{t.servicios.planQuarterly}</div>
                       </CardHeader>
-                      <CardContent className="flex flex-col justify-between p-6 pt-0">
+                      <CardContent className="flex flex-col p-6 pt-0">
                         <div className="min-h-[4.5rem] flex flex-col justify-center">
                           {isFormacion ? (
                             <div className="flex justify-center">
@@ -796,7 +796,7 @@ function IndexPage() {
                         </div>
                         <div className="border-t border-zinc-200 my-4" />
                         <div className="flex flex-col gap-3 text-zinc-700">
-                          {Array.from({ length: globalMaxFeatures }).map((_, idx: number) => {
+                        {Array.from({ length: quarterlyGlobalMaxFeatures }).map((_, idx: number) => {
                             const feature = ((p as any).featuresQuarterly || [])[idx];
                             return (
                               <div key={idx} className="min-h-[1.75rem] flex items-center gap-2">
@@ -815,6 +815,7 @@ function IndexPage() {
                               </div>
                             );
                           })}
+
                         </div>
                       </CardContent>
                     </Card>
@@ -946,7 +947,8 @@ function IndexPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-semibold text-zinc-900 mb-4">{t.contacto.info_title}</h3>
-                <p className="text-sm text-zinc-600 mb-4">{t.contacto.note}</p>
+                <p className="text-sm text-zinc-600 mb-4">{t.contacto.note.number}</p>
+                <p className="text-sm text-zinc-600 mb-4">{t.contacto.note.email}</p>
               </div>
 
               <div>
