@@ -137,12 +137,12 @@ const texts = {
       title: 'Testimonios',
       items: [
         {
-          t: 'Anabel Perez',
+          t: 'Anabel Pérez',
           d:
             'Empecé a trabajar con Adri aproximadamente 4 meses después de mi operación de LCA, apenas tenía fuerza en la pierna operada y tenía dificultades en acciones cotidianas. Gracias a su acompañamiento en los entrenamientos y en el proceso de recuperación he conseguido recuperar fuerza, movilidad y volver a hacer una vida y unos entrenamientos normales. Muchas gracias por todo!',
         },
         {
-          t: 'Joaquim Martinez',
+          t: 'Joaquim Martínez',
           d:
             'Un buen profesional, siempre atento a las necesidades del cliente, con capacidad de adaptación a sus circunstancias cada día y que diseña un plan de trabajo progresivo hacia el objetivo. Gracias por la labor y el acompañamiento.',
         },
@@ -301,16 +301,16 @@ const texts = {
       title: 'Testimonis',
       items: [
         {
-          t: 'Anabel Perez',
-          d: `Vaig començar a treballar amb Adri aproximadament 4 mesos després de la meva operació de LCA, amb prou feines tenia força a la cama operada i tenia dificultats en accions quotidianes. Gràcies al vostre acompanyament en els entrenaments i en el procés de recuperació he aconseguit recuperar força, mobilitat i tornar a fer una vida i uns entrenaments normals. Moltes gràcies per tot!`,
+          t: 'Anabel Pérez',
+          d: `Vaig començar a treballar amb l\'Adri aproximadament 4 mesos després de la meva operació de LCA, amb prou feines tenia força a la cama operada i tenia dificultats en accions quotidianes. Gràcies al teu acompanyament en els entrenaments i en el procés de recuperació he aconseguit recuperar força, mobilitat i tornar a fer una vida i uns entrenaments normals. Moltes gràcies per tot!`,
         },
         {
-          t: 'Joaquim Martinez',
-          d: `Un bon professional, sempre atent a les necessitats del client, amb capacitat d'adaptació a les vostres circumstàncies cada dia i que dissenya un pla de treball progressiu cap a l'objectiu. Gràcies per la feina i l'acompanyament`,
+          t: 'Joaquim Martínez',
+          d: `Un bon professional, sempre atent a les necessitats del client, amb capacitat d'adaptació a les circumstàncies cada dia i que dissenya un pla de treball progressiu cap a l'objectiu. Gràcies per la feina i l'acompanyament.`,
         },
         {
           t: 'Jordi Arto',
-          d: `Després d'un any treballant amb l'Adrià, només puc tenir bones paraules. És puntual, educat i s'adapta sempre a allò que necessites. Els seus plans d'entrenament són molt bons i és al teu costat per assegurar que facis cada exercici correctament i evitar lesions. Ho recomanaria sense dubtar. Ha estat un plaer entrenar-s'hi.`,
+          d: `Després d'un any treballant amb l'Adrià, només puc tenir bones paraules. És puntual, educat i s'adapta sempre a allò que necessites. Els seus plans d'entrenament són molt bons i és al teu costat per assegurar que facis cada exercici correctament i evitar lesions. Ho recomanaria sense dubtar. Ha estat un plaer entrenar amb ell.`,
         },
       ],
     },
