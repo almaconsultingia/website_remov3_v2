@@ -26,13 +26,13 @@ const texts = {
     },
     hero: {
       title: 'RE:MOV3',
-      subtitle: 'Readaptación · Entrenamento · Formación',
+      subtitle: 'Readaptación · Entrenamiento · Formación',
       desc:
         'Tu movimiento, tu ritmo, tu evolución.',
       cta: 'Ver Servicios',
       whatsapp: 'WhatsApp',
     },
-    tagline: 'Readaptación · Entrenamiento de fuerza · Formación',
+    tagline: 'Readaptación · Entrenamiento · Formación',
     servicios: {
       title: 'Servicios online',
       planMonthly: 'PLAN MENSUAL',
@@ -65,10 +65,10 @@ const texts = {
           ],
         },
         {
-          t: 'Membresía Women',
+          t: 'Membresía',
           priceMonthly: '79€',
           priceQuarterly: '225€ (75€/mes)',
-          quote: 'Entrenamiento híbrido, comunidad y recursos wellness para mujeres.',
+          quote: 'Entrenamiento híbrido, comunidad y recursos wellness.',
           featuresMonthly: [
             'Entreno híbrido',
             'Movilidad',
@@ -99,34 +99,34 @@ const texts = {
         {
           t: '100% ACTIVO, 0% PASIVO',
           d:
-            'Olvida la camilla. La recuperación real se gana en la sala de entrenamiento. Trabajamos con fuerza, progresiones y movimiento, no con tratamientos que sólo alivian temporalmente.',
+            'Tu recuperación se trabaja de manera 100% activa, personalizada y basada en la ciencia. Trabajamos con un entrenamiento adaptado a cada fase de la readaptación, con un enfoque integral para que tu cuerpo vuelva a responder, recuperes la confianza y avances con seguridad.',
         },
         {
           t: 'El ciclo de feedback',
           d:
-            'Metodología viva: tú recibes la planificación, la ejecutas y yo reviso tu evolución semanalmente. Ajustamos cargas y tareas constantemente según tu progreso real.',
+            'No sigues un plan cerrado: evolucionamos juntos. Realizo un seguimiento constante y una planificación semanal adaptada a tu momento actual. Cada sesión se ajusta según tu progreso real, con feedback continuo para que siempre sepas cómo estás y hacia dónde vamos.',
         },
         {
           t: 'Tecnología y datos',
           d:
-            'No adivinamos, medimos. Usamos apps digitales para corregir técnica, almacenar resultados y comparar métricas. Objetividad para saber, sin dudas, si estamos mejorando.',
+            'La tecnología nos ayuda a tomar mejores decisiones. Utilizo apps digitales para analizar, guardar y comparar resultados, aportando datos objetivos que nos permiten saber exactamente en qué punto te encuentras y cómo seguir avanzando.',
         },
         {
           t: 'Educación y autonomía',
           d:
-            'El objetivo final es que no me necesites. Te explico el “por qué” de cada ejercicio y sensación para que entiendas el proceso y ganes independencia a largo plazo.',
+            'El objetivo es claro: que llegues a tu meta y no dependas de nadie. Por eso, te ayudo a comprender cada paso del proceso, fomentando tu implicación activa y tu independencia a largo plazo.',
         },
         {
           t: 'Especialización',
           d:
-            'Adaptando cada sesión según tu feedback y molestias. Uso tecnología digital (apps de medición) para trackear tu progreso objetivo en tiempo real y ajustar tu plan constantemente. Traduzco la ciencia en explicaciones simples para que entiendas qué te pasa y cómo gestionarlo de forma sostenible.',
+            'Trabajo con ejercicios progresivos adaptados a cada fase del proceso y a tu tolerancia al dolor, con el objetivo de revertir lesiones y construir un cuerpo fuerte y resiliente. Cada sesión se ajusta a tu estado físico y funcional actual. A nivel cognitivo y motor, reaprendes a activar y ejecutar movimientos que antes no podías realizar, mejorando el control, la confianza y la eficiencia del movimiento. Te enseño a gestionar correctamente la carga y a moverte con una activación completa, ajustando el entrenamiento según la respuesta de tu cuerpo: adaptándolo cuando es necesario o aumentando progresivamente la carga cuando estás preparado.',
         },
       ],
     },
     quien: {
       title: 'Quién soy',
       content: [
-        'Llevo más de 7 años trabajando en entrenamiento y readaptación. Estoy especializado en recuperación de lesiones y entrenamiento de fuerza para mujeres.',
+        'Llevo más de 7 años trabajando en entrenamiento y readaptación. Estoy especializado en recuperación de lesiones y entrenamiento de fuerza.',
         'Mi forma de trabajar nace tanto de la formación como de la experiencia personal. Haber pasado por lesiones graves me enseñó algo que ningún máster explica: los protocolos estándar no siempre funcionan.',
         'La recuperación real necesita un plan personalizado que vaya más allá de lo físico. No se trata solo de recuperar fuerza o movilidad, sino de volver a confiar en el cuerpo y perder el miedo a moverse.',
         'En RE:MOVE3 acompaño procesos de readaptación de forma clara y progresiva, adaptándome a cada persona desde una perspectiva física, funcional y mental.',
@@ -137,17 +137,17 @@ const texts = {
       title: 'Testimonios',
       items: [
         {
-          t: 'Anabel',
+          t: 'Anabel Perez',
           d:
             'Empecé a trabajar con Adri aproximadamente 4 meses después de mi operación de LCA, apenas tenía fuerza en la pierna operada y tenía dificultades en acciones cotidianas. Gracias a su acompañamiento en los entrenamientos y en el proceso de recuperación he conseguido recuperar fuerza, movilidad y volver a hacer una vida y unos entrenamientos normales. Muchas gracias por todo!',
         },
         {
-          t: 'Joaquim',
+          t: 'Joaquim Martinez',
           d:
             'Un buen profesional, siempre atento a las necesidades del cliente, con capacidad de adaptación a sus circunstancias cada día y que diseña un plan de trabajo progresivo hacia el objetivo. Gracias por la labor y el acompañamiento.',
         },
         {
-          t: 'Jordi',
+          t: 'Jordi Arto',
           d:
             'Después de un año trabajando con Adrià, sólo puedo tener palabras buenas. Es puntual, educado y se adapta siempre a lo que necesitas. Sus planes de entrenamiento son muy buenos y está a tu lado para asegurar que hagas cada ejercicio correctamente y evitar lesiones. Lo recomendaría sin dudar. Ha sido un placer entrenar con él.',
         },
@@ -195,7 +195,7 @@ const texts = {
       cta: 'Veure Serveis',
       whatsapp: 'WhatsApp',
     },
-    tagline: 'Readaptació · Entrenament de força · Formació',
+    tagline: 'Readaptació · Entrenament · Formació',
     servicios: {
       title: 'Serveis online',
       planMonthly: 'PLA MENSUAL',
@@ -228,10 +228,10 @@ const texts = {
           ],
         },
         {
-          t: 'Membresía Women',
+          t: 'Membresía',
           priceMonthly: '79€',
           priceQuarterly: '225€ (75€/mes)',
-          quote: 'Entrenament híbrid, comunitat i recursos wellness per a dones.',
+          quote: 'Entrenament híbrid, comunitat i recursos wellness.',
           featuresMonthly: [
             'Entreno híbrid',
             'Movilitat',
@@ -262,34 +262,34 @@ const texts = {
         {
           t: '100% ACTIU, 0% PASSIU',
           d:
-            "Oblida la llitera. La recuperació real es guanya a la sala d'entrenament. Treballem amb força, progressions i moviment, no amb tractaments que només alleugen temporalment.",
+            "La teva recuperació es treballa de manera 100% activa, personalitzada i basada en la ciència. Treballem amb un entrenament adaptat a cada fase de la readaptació, amb un enfocament integral perquè el teu cos torni a respondre, recuperis la confiança i avancis amb seguretat.",
         },
         {
           t: 'El cicle de feedback',
           d:
-            "Una metodologia viva: tu reps la planificació, l'executes i jo reviso la teva evolució setmanalment. Ajustem les càrregues i els deures constantment segons el teu progrés real.",
+            "No segueixes un pla tancat: evolucionem junts. Faig un seguiment constant i una planificació setmanal adaptada al teu moment actual. Cada sessió s\'ajusta segons el teu progrés real, amb feedback continu perquè sempre sàpigues com estàs i cap on anem.",
         },
         {
           t: 'Tecnologia i dades',
           d:
-            'No endevinem, mesurem. Utilitzem apps digitals per corregir la tècnica, emmagatzemar resultats i comparar mètriques. Objectivitat per saber, sense dubtes, si estem millorant.',
+            'La tecnologia ens ajuda a prendre millors decisions. Utilitzo apps digitals per analitzar, guardar i comparar resultats, aportant dades objectives que ens permeten saber exactament en quin punt et trobes i com continuar avançant.',
         },
         {
           t: 'Educació i autonomia',
           d:
-            "L'objectiu final és que no em necessitis. T'explico el 'per què' de cada exercici i sensació perquè entenguis el procés i guanyis independència a llarg termini.",
+            "L\'objectiu és clar: que arribis a la teva meta i no depenguis de ningú. T\'explico el “per què” de cada exercici i de cada sensació perquè entenguis el procés, participis activament en la teva recuperació i guanyis autonomia a llarg termini.",
         },
         {
           t: 'Especialització',
           d:
-            "Aquí no hi ha massatges que només amaguen el problema. Treballo amb exercici progressiu i força real: l'únic camí que reverteix lesions i construeix cossos resilients. Cada sessió s'adapta al teu estat actual. Si avui tens molèsties, ajustem. Si progresses, pugem el nivell.",
+            "Treballo amb exercicis progressius adaptats a cada fase del procés i a la teva tolerància al dolor, amb l\'objectiu de revertir lesions i construir un cos fort i resilient. Cada sessió s\'ajusta al teu estat físic i funcional actual. A nivell cognitiu i motor, reaprens a activar i executar els moviments que abans no podies realitzar, millorant el control, la confiança i l\'eficiència del moviment. T\'ensenyo a gestionar correctament la càrrega i a moure\'t amb una activació completa, ajustant l\'entrenament segons la resposta del teu cos: adaptant-lo quan cal o augmentant progressivament la càrrega quan estàs preparat.",
         },
       ],
     },
     quien: {
       title: 'Qui sóc',
       content: [
-        "Més de 7 anys dedicat a l'entrenament i la readaptació. Especialitzat en recuperació de lesions i entrenament de força per a dones.",
+        "Més de 7 anys dedicat a l'entrenament i la readaptació. Especialitzat en recuperació de lesions i entrenament de força.",
         'Les meves pròpies lesions greus em van ensenyar el que cap màster explica: els protocols estàndard no funcionen. La recuperació real necessita un pla personalitzat que vagi més enllà del físic.',
         "Perquè tornar d'una lesió no és només recuperar força o mobilitat.",
         'És recuperar la confiança. Perdre la por. Sentir que el teu cos torna a ser teu.',
@@ -301,15 +301,15 @@ const texts = {
       title: 'Testimonis',
       items: [
         {
-          t: 'Anabel',
+          t: 'Anabel Perez',
           d: `Vaig començar a treballar amb Adri aproximadament 4 mesos després de la meva operació de LCA, amb prou feines tenia força a la cama operada i tenia dificultats en accions quotidianes. Gràcies al vostre acompanyament en els entrenaments i en el procés de recuperació he aconseguit recuperar força, mobilitat i tornar a fer una vida i uns entrenaments normals. Moltes gràcies per tot!`,
         },
         {
-          t: 'Joaquim',
+          t: 'Joaquim Martinez',
           d: `Un bon professional, sempre atent a les necessitats del client, amb capacitat d'adaptació a les vostres circumstàncies cada dia i que dissenya un pla de treball progressiu cap a l'objectiu. Gràcies per la feina i l'acompanyament`,
         },
         {
-          t: 'Jordi',
+          t: 'Jordi Arto',
           d: `Després d'un any treballant amb l'Adrià, només puc tenir bones paraules. És puntual, educat i s'adapta sempre a allò que necessites. Els seus plans d'entrenament són molt bons i és al teu costat per assegurar que facis cada exercici correctament i evitar lesions. Ho recomanaria sense dubtar. Ha estat un plaer entrenar-s'hi.`,
         },
       ],
