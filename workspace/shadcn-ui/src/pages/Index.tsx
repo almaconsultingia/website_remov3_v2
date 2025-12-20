@@ -382,7 +382,7 @@ function IndexPage() {
         <div className="container-max flex items-center gap-4 py-3">
           {/* Logo + tagline */}
           <div className="flex flex-col ">
-            <div className="font-bold tracking-tight text-lg md:text-xl text-zinc-900">RE:MOV3</div>
+            <div className="font-bold tracking-tight text-lg md:text-xl text-zinc-900 logo-main">RE:MOV3</div>
             <div className="hidden md:block text-xs  text-zinc-500">{t.tagline}</div>
           </div>
 
@@ -611,7 +611,7 @@ function IndexPage() {
         <div className="absolute inset-0 bg-white/50" />
         <div className="relative container-max flex min-h-[80vh] md:min-h-[85vh] items-center justify-center">
           <div className="max-w-2xl py-16 text-center mx-auto">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-900">RE:MOV3</h1>
+            <h1 id="hero-title" className="text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-900 logo-main">RE:MOV3</h1>
             <p className="mt-3 text-xl md:text-2xl text-zinc-700">{t.hero.subtitle}</p>
             <p className="mt-4 text-base md:text-lg text-zinc-600">
               {t.hero.desc}

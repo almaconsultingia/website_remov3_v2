@@ -63,3 +63,8 @@ html {
 .logo-tagline {
   @apply hidden md:block text-[0.8rem] leading-tight text-zinc-600;
 }
+
+.logo-main {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* Bold */
+}
