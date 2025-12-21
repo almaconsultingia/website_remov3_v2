@@ -50,9 +50,9 @@ const texts = {
           t: 'Readaptación 1:1',
           priceMonthly: '150€',
           priceQuarterly: '390€ (130€/mes)',
-          quote: 'Servicio premium 1:1 para lesiones de rodilla (LCA y menisco). Plan personalizado con seguimiento semanal.',
+          quote: 'Servicio premium 1:1 para lesiones. Plan personalizado con seguimiento semanal.',
           featuresMonthly: [
-            'Acompañamiento 1:1 100% online',
+            'Acompañamiento 1:1',
             'Plan totalmente personalizado y adaptado',
             'Protocolo completo por fases',
             'Ajustes de carga semanales',
@@ -216,7 +216,7 @@ const texts = {
           t: 'Readaptació 1:1',
           priceMonthly: '150€',
           priceQuarterly: '390€ (130€/mes)',
-          quote: 'Servei premium 1:1 per a lesions de genoll (LCA i menisc). Pla personalitzat amb seguiment setmanal.',
+          quote: 'Servei premium 1:1 per a lesions. Pla personalitzat amb seguiment setmanal.',
           featuresMonthly: [
             'Acompanyament 1:1',
             'Pla totalment personalitzat i adaptado',
@@ -666,7 +666,7 @@ function IndexPage() {
         ) : (
           // Fallback: PRÓXIMAMENTE
           <div className="animate-fade-in w-full text-center px-2">
-            <span className="inline-block bg-zinc-200 text-zinc-700 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider whitespace-nowrap">
+            <span className={`text-3xl font-bold uppercase tracking-wider ${textColor} whitespace-nowrap max-w-full inline-block`}>
               PRÓXIMAMENTE
             </span>
           </div>
