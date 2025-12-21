@@ -60,12 +60,12 @@ const texts = {
           ],
           featuresQuarterly: [
             'Todo lo del mensual',
-            '+ Re-test mensual',
-            '+ Informe de evolución',
+            'Re-test mensual',
+            'Informe de evolución',
           ],
         },
         {
-          t: 'Membresía',
+          t: 'Entrenamiento',
           priceMonthly: '79€',
           priceQuarterly: '225€ (75€/mes)',
           quote: 'Entrenamiento híbrido, comunidad y recursos wellness.',
@@ -125,13 +125,16 @@ const texts = {
     },
     quien: {
       title: 'Quién soy',
-      content: [
-        'Llevo más de 7 años trabajando en entrenamiento y readaptación. Estoy especializado en recuperación de lesiones y entrenamiento de fuerza.',
-        'Mi forma de trabajar nace tanto de la formación como de la experiencia personal. Haber pasado por lesiones graves me enseñó algo que ningún máster explica: los protocolos estándar no siempre funcionan.',
-        'La recuperación real necesita un plan personalizado que vaya más allá de lo físico. No se trata solo de recuperar fuerza o movilidad, sino de volver a confiar en el cuerpo y perder el miedo a moverse.',
-        'En RE:MOVE3 acompaño procesos de readaptación de forma clara y progresiva, adaptándome a cada persona desde una perspectiva física, funcional y mental.',
-        'Readaptación real. Resultados reales. Acompañamiento humano.',
-      ],
+      paragraph1: 'Llevo más de 7 años trabajando en entrenamiento y readaptación. Estoy especializado en recuperación de lesiones y entrenamiento de fuerza.',
+      paragraph2: 'Mi forma de trabajar nace tanto de la formación como de la experiencia personal. Haber pasado por lesiones graves me enseñó algo que ningún máster explica: los protocolos estándar no siempre funcionan.',
+      destacado1: 'La recuperación real necesita un plan personalizado que vaya más allá de lo físico.',
+      paragraph3: 'No se trata solo de recuperar fuerza o movilidad.',
+      destacado2: 'Se trata de volver a confiar en el cuerpo y perder el miedo a moverse.',
+      paragraph4: 'En RE:MOVE3 acompaño procesos de readaptación de forma clara y progresiva, adaptándome a cada persona desde una perspectiva física, funcional y mental.',
+      cierre1: 'Readaptación real.',
+      cierre2: 'Resultados reales.',
+      cierre3: 'Acompañamiento humano.',
+      cta: 'Cuéntame tu caso',
     },
     testimonios: {
       title: 'Testimonios',
@@ -223,12 +226,12 @@ const texts = {
           ],
           featuresQuarterly: [
             'Tot el del mensual',
-            '+ Re-test mensual',
-            '+ Informe d\'evolució',
+            'Re-test mensual',
+            'Informe d\'evolució',
           ],
         },
         {
-          t: 'Membresía',
+          t: 'Entrenament',
           priceMonthly: '79€',
           priceQuarterly: '225€ (75€/mes)',
           quote: 'Entrenament híbrid, comunitat i recursos wellness.',
@@ -288,14 +291,16 @@ const texts = {
     },
     quien: {
       title: 'Qui sóc',
-      content: [
-        "Més de 7 anys dedicat a l'entrenament i la readaptació. Especialitzat en recuperació de lesions i entrenament de força.",
-        'Les meves pròpies lesions greus em van ensenyar el que cap màster explica: els protocols estàndard no funcionen. La recuperació real necessita un pla personalitzat que vagi més enllà del físic.',
-        "Perquè tornar d'una lesió no és només recuperar força o mobilitat.",
-        'És recuperar la confiança. Perdre la por. Sentir que el teu cos torna a ser teu.',
-        "A RE:MOV3 ofereixo el que jo hauria volgut tenir en els meus pitjors moments: un pla clar, progressiu i adaptat a tu. Físic, funcional i mental.",
-        'Readaptació real. Resultats reals. Acompañament humà.',
-      ],
+      paragraph1: "Més de 7 anys dedicat a l'entrenament i la readaptació. Especialitzat en recuperació de lesions i entrenament de força.",
+      paragraph2: 'Les meves pròpies lesions greus em van ensenyar el que cap màster explica: els protocols estàndard no funcionen.',
+      destacado1: 'La recuperació real necessita un pla personalitzat que vagi més enllà del físic.',
+      paragraph3: "Perquè tornar d'una lesió no és només recuperar força o mobilitat.",
+      destacado2: 'És recuperar la confiança. Perdre la por. Sentir que el teu cos torna a ser teu.',
+      paragraph4: "A RE:MOV3 ofereixo el que jo hauria volgut tenir en els meus pitjors moments: un pla clar, progressiu i adaptat a tu. Físic, funcional i mental.",
+      cierre1: 'Readaptació real.',
+      cierre2: 'Resultats reals.',
+      cierre3: 'Acompañament humà.',
+      cta: 'Explica\'m el teu cas',
     },
     testimonios: {
       title: 'Testimonis',
@@ -344,6 +349,246 @@ const texts = {
 const scrollToId = (id: string) => {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+// Tamaño de iconos (reducido 10% para que sean puntos introductorios)
+const ICON_SIZE = 16;
+
+// Función para obtener el icono SVG correspondiente a cada feature de cualquier plan
+const getFeatureIcon = (featureText: string) => {
+  const text = featureText.toLowerCase();
+  
+  // Iconos SVG en blanco y negro elegantes
+  // Plan Readaptación 1:1
+  if (text.includes('acompañamiento') || text.includes('acompanyament')) {
+    // Icono de mensaje/chat
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    );
+  }
+  if (text.includes('plan') || text.includes('pla')) {
+    // Icono de lápiz/editar
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+      </svg>
+    );
+  }
+  if (text.includes('protocolo') || text.includes('protocol')) {
+    // Icono de menú (tres líneas horizontales)
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    );
+  }
+  if (text.includes('ajustes') || text.includes('ajustos') || text.includes('carga')) {
+    // Icono de mancuerna (dumbbell)
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <rect x="3" y="8" width="4" height="8" rx="1" />
+        <rect x="17" y="8" width="4" height="8" rx="1" />
+        <line x1="7" y1="12" x2="17" y2="12" />
+      </svg>
+    );
+  }
+  if (text.includes('trabajo activo') || text.includes('treball actiu')) {
+    // Icono de rayo (flash)
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    );
+  }
+  if (text.includes('videollamada') || text.includes('videotrucada')) {
+    // Icono de videocámara
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M23 7l-7 5 7 5V7z" />
+        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+      </svg>
+    );
+  }
+  if (text.includes('corrección') || text.includes('correcció')) {
+    // Icono de checkmark en círculo
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    );
+  }
+  
+  // Plan Membresía
+  if (text.includes('entreno') || text.includes('entrenamiento') || text.includes('entrenament')) {
+    // Icono de flechas cruzadas (shuffle)
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <polyline points="16 3 21 3 21 8" />
+        <line x1="4" y1="20" x2="21" y2="3" />
+        <polyline points="21 16 21 21 16 21" />
+        <line x1="15" y1="15" x2="21" y2="21" />
+        <line x1="4" y1="4" x2="9" y2="9" />
+      </svg>
+    );
+  }
+  if (text.includes('movilidad') || text.includes('movilitat')) {
+    // Icono de corredor
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <circle cx="12" cy="4" r="2" />
+        <path d="M12 6v4" />
+        <path d="M8 10l2 2 4-2 2 2" />
+        <path d="M6 18l2-2 2 2" />
+        <path d="M18 18l-2-2 2 2" />
+        <path d="M10 12l-2 4" />
+        <path d="M14 12l2 4" />
+      </svg>
+    );
+  }
+  if (text.includes('wellness') || text.includes('recursos')) {
+    // Icono de corazón/salud
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+      </svg>
+    );
+  }
+  if (text.includes('comunidad') || text.includes('comunitat')) {
+    // Icono de usuarios/grupo
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    );
+  }
+  
+  // Plan Trimestral - features adicionales
+  if (text.includes('todo lo del') || text.includes('tot el del')) {
+    // Icono de lista/checklist
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M9 11l3 3L22 4" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      </svg>
+    );
+  }
+  if (text.includes('re-test') || text.includes('test')) {
+    // Icono de gráfico/medición
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <line x1="18" y1="20" x2="18" y2="10" />
+        <line x1="12" y1="20" x2="12" y2="4" />
+        <line x1="6" y1="20" x2="6" y2="14" />
+      </svg>
+    );
+  }
+  if (text.includes('informe') || text.includes('evolución') || text.includes('evolució')) {
+    // Icono de documento
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+        <polyline points="10 9 9 9 8 9" />
+      </svg>
+    );
+  }
+  if (text.includes('precio') || text.includes('preu')) {
+    // Icono de etiqueta/precio
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+        <line x1="7" y1="7" x2="7.01" y2="7" />
+      </svg>
+    );
+  }
+  if (text.includes('compromiso') || text.includes('compromís')) {
+    // Icono de estrella/objetivo (compromiso)
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <circle cx="12" cy="12" r="10" />
+        <polygon points="12 6 14.5 10.5 19.5 11.5 16 15 17 20 12 17 7 20 8 15 4.5 11.5 9.5 10.5 12 6" />
+      </svg>
+    );
+  }
+  if (text.includes('acceso') || text.includes('accés')) {
+    // Icono de llave/acceso
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
+      </svg>
+    );
+  }
+  if (text.includes('soporte') || text.includes('suport')) {
+    // Icono de soporte/ayuda
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+        <line x1="12" y1="17" x2="12.01" y2="17" />
+      </svg>
+    );
+  }
+  
+  // Plan Formación
+  if (text.includes('webinar')) {
+    // Icono de pantalla/video
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+    );
+  }
+  if (text.includes('workshop') || text.includes('presencial')) {
+    // Icono de usuarios/grupo
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    );
+  }
+  if (text.includes('cápsula') || text.includes('càpsula') || text.includes('on-demand')) {
+    // Icono de play/video
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <polygon points="5 3 19 12 5 21 5 3" />
+      </svg>
+    );
+  }
+  if (text.includes('mentoría') || text.includes('mentoria')) {
+    // Icono de persona con birrete
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+        <path d="M6 3h12M6 3v2M18 3v2" />
+        <path d="M6 5h12M6 5l-2 4h16l-2-4" />
+        <line x1="12" y1="5" x2="12" y2="3" />
+      </svg>
+    );
+  }
+  
+  // Icono por defecto (checkmark simple)
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <path d="M20 6L9 17l-5-5" />
+    </svg>
+  );
 };
 
 function IndexPage() {
@@ -600,6 +845,10 @@ function IndexPage() {
       <section id="hero" className="relative min-h-[80vh] md:min-h-[85vh] overflow-hidden bg-white">
         <video
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ 
+            filter: 'contrast(0.85) brightness(1.05) saturate(1.1)',
+            imageRendering: 'crisp-edges'
+          }}
           autoPlay
           muted
           loop
@@ -608,12 +857,11 @@ function IndexPage() {
         >
           <source src="/assets/hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-white/50" />
         <div className="relative container-max flex min-h-[80vh] md:min-h-[85vh] items-center justify-center">
           <div className="max-w-2xl py-16 text-center mx-auto">
-            <h1 id="hero-title" className="text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-900 logo-main">RE:MOV3</h1>
-            <p className="mt-3 text-xl md:text-2xl text-zinc-700">{t.hero.subtitle}</p>
-            <p className="mt-4 text-base md:text-lg text-zinc-600">
+            <h1 id="hero-title" className="text-5xl md:text-6xl font-extrabold tracking-tight text-black logo-main">RE:MOV3</h1>
+            <p className="mt-3 text-xl md:text-2xl text-black">{t.hero.subtitle}</p>
+            <p className="mt-4 text-base md:text-lg text-black">
               {t.hero.desc}
             </p>
 
@@ -633,42 +881,89 @@ function IndexPage() {
 
       {/* Orden: Quién soy → Servicios → Metodología → Testimonios → Contacto */}
 
-      {/* Quién soy - sin reborde blanco, imagen unificada al estilo */}
-      <section id="quien" className="bg-zinc-50 text-zinc-900">
-        <div className="container-max py-14 md:py-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">{t.quien.title}</h2>
-          <div className="grid gap-8 md:grid-cols-2 items-start">
-            {/* Izquierda: descripción basada en idioma */}
-            <div className="h-[420px] md:h-[520px] flex flex-col justify-around">
-              {t.quien.content.map((para, idx) => (
-                <p
-                  key={idx}
-                  className="text-zinc-600 text-sm md:text-base leading-relaxed"
-                >
-                  {para}
-                </p>
-              ))}
+      {/* Quién soy - nuevo diseño */}
+      <section id="quien" className="bg-zinc-50" style={{ padding: '80px 20px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          {/* Título */}
+          <h2 className="quien-soy__title" style={{ fontSize: '42px', fontWeight: 700, color: '#1A1A1A', marginBottom: '12px' }}>
+            {t.quien.title}
+          </h2>
+          {/* Línea decorativa */}
+          <div style={{ width: '60px', height: '3px', backgroundColor: '#2A2A2A', marginBottom: '60px' }} />
+          
+          {/* Grid principal */}
+          <div className="quien-soy__grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '60px' }}>
+            {/* Texto izquierda */}
+            <div className="quien-soy__text" style={{ order: 1 }}>
+              <p style={{ fontSize: '18px', lineHeight: 1.7, color: '#4A4A4A', marginBottom: '24px' }}>
+                {t.quien.paragraph1}
+              </p>
+              <p style={{ fontSize: '18px', lineHeight: 1.7, color: '#4A4A4A', marginBottom: '24px' }}>
+                {t.quien.paragraph2}
+              </p>
+              <p className="quien-soy__destacado" style={{ fontSize: '20px', fontWeight: 600, color: '#1A1A1A', lineHeight: 1.6, margin: '28px 0', paddingLeft: '20px', borderLeft: '3px solid #2A2A2A' }}>
+                {t.quien.destacado1}
+              </p>
+              <p style={{ fontSize: '18px', lineHeight: 1.7, color: '#4A4A4A', marginBottom: '24px' }}>
+                {t.quien.paragraph3}
+              </p>
+              <p className="quien-soy__destacado" style={{ fontSize: '20px', fontWeight: 600, color: '#1A1A1A', lineHeight: 1.6, margin: '28px 0', paddingLeft: '20px', borderLeft: '3px solid #2A2A2A' }}>
+                {t.quien.destacado2}
+              </p>
+              <p style={{ fontSize: '18px', lineHeight: 1.7, color: '#4A4A4A', marginBottom: '24px' }}>
+                {t.quien.paragraph4}
+              </p>
             </div>
-
-            {/* Derecha: imagen unificada al estilo, sin borde blanco */}
-            <div className="rounded-xl overflow-hidden shadow-sm">
+            
+            {/* Imagen derecha */}
+            <div className="quien-soy__image" style={{ borderRadius: '8px', overflow: 'hidden', minHeight: '500px', order: 2 }}>
               <img
                 src="/images/quien-soc-2.jpeg"
-                alt={lang === 'es' ? 'Fisioterapeuta en sesión - imagen' : 'Fisioterapeuta en sessió - imatge'}
-                className="w-full h-[420px] md:h-[520px] object-cover"
+                alt={lang === 'es' ? 'Oriol entrenando en RE:MOVE3' : 'Oriol entrenant a RE:MOVE3'}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  minHeight: '500px',
+                  objectFit: 'cover',
+                  borderRadius: '8px',
+                  transition: 'transform 0.3s ease',
+                }}
+                className="hover:scale-[1.02]"
                 loading="lazy"
               />
             </div>
           </div>
         </div>
+        
+        <style>{`
+          @media (min-width: 768px) {
+            .quien-soy__grid {
+              grid-template-columns: 1fr 1fr !important;
+            }
+          }
+          @media (max-width: 767px) {
+            section#quien {
+              padding: 40px 16px !important;
+            }
+            .quien-soy__title {
+              font-size: 32px !important;
+            }
+            .quien-soy__destacado {
+              font-size: 18px !important;
+              padding-left: 16px !important;
+            }
+          }
+        `}</style>
       </section>
 
       <Separator className="container-max bg-zinc-200" />
 
       {/* Servicios - 3 planes con layout unificado en columnas */}
-      <section id="servicios" className="bg-white">
-        <div className="container-max py-14 md:py-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900">{t.servicios.title}</h2>
+      <section id="servicios" className="bg-white" style={{ padding: '80px 20px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#1A1A1A', marginBottom: '12px' }}>{t.servicios.title}</h2>
+          {/* Línea decorativa */}
+          <div style={{ width: '60px', height: '3px', backgroundColor: '#2A2A2A', marginBottom: '32px' }} />
           {(() => {
             // Calculate global maxFeatures across ALL services to ensure alignment
             const globalMaxFeatures = Math.max(
@@ -757,7 +1052,7 @@ function IndexPage() {
                               <div key={idx} className="min-h-[1.75rem] flex items-center gap-2">
                                 {feature ? (
                                   <>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
+                                    {getFeatureIcon(feature)}
                                     <span className="text-sm">{feature}</span>
                                   </>
                                 ) : (
@@ -806,7 +1101,7 @@ function IndexPage() {
                                   </span>
                                 ) : feature ? (
                                   <>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0"><path d="M20 6L9 17l-5-5" /></svg>
+                                    {getFeatureIcon(feature)}
                                     <span className="text-sm">{feature}</span>
                                   </>
                                 ) : (
@@ -853,21 +1148,33 @@ function IndexPage() {
       <Separator className="container-max bg-zinc-200" />
 
       {/* Metodología - secciones según documento; "Especialización" alargada como fin de sección; sin cita final */}
-      <section id="como" className="bg-zinc-50">
-        <div className="container-max py-14 md:py-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900">{t.como.title}</h2>
+      <section id="como" className="bg-zinc-50" style={{ padding: '80px 20px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#1A1A1A', marginBottom: '12px' }}>{t.como.title}</h2>
+          {/* Línea decorativa */}
+          <div style={{ width: '60px', height: '3px', backgroundColor: '#2A2A2A', marginBottom: '32px' }} />
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {t.como.sections.map((s) => {
               const isEspecial =
                 s.t.toLowerCase().includes('especialización') ||
                 s.t.toLowerCase().includes('especialització');
+              const isEducacion = 
+                s.t.toLowerCase().includes('educación') ||
+                s.t.toLowerCase().includes('educació') ||
+                s.t.toLowerCase().includes('autonomía') ||
+                s.t.toLowerCase().includes('autonomia');
+              const isTecnologia =
+                s.t.toLowerCase().includes('tecnología') ||
+                s.t.toLowerCase().includes('tecnologia') ||
+                s.t.toLowerCase().includes('datos') ||
+                s.t.toLowerCase().includes('dades');
               return (
                 <div key={s.t} className={isEspecial ? 'md:col-span-2' : ''}>
-                  <Card className="bg-white border border-zinc-200 rounded-xl shadow-sm">
+                  <Card className={`bg-white border border-zinc-200 rounded-xl shadow-sm ${!isEspecial ? 'h-full flex flex-col' : ''}`}>
                     <CardHeader className="space-y-1">
                       <CardTitle className="text-xl font-semibold text-zinc-900">{s.t}</CardTitle>
                     </CardHeader>
-                    <CardContent className={`text-zinc-700 ${isEspecial ? 'leading-relaxed' : ''}`}>
+                    <CardContent className={`text-zinc-700 flex-1 ${isEspecial ? 'leading-relaxed' : ''} ${(isEducacion || isTecnologia) ? 'min-h-[120px]' : ''}`}>
                       {s.d}
                     </CardContent>
                   </Card>
@@ -882,10 +1189,11 @@ function IndexPage() {
       <Separator className="container-max bg-zinc-200" />
 
       {/* Testimonios - fondo blanco */}
-      <section id="testimonios" className="bg-white text-zinc-900">
-        <div className="container-max py-14 md:py-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">{t.testimonios.title}</h2>
-
+      <section id="testimonios" className="bg-white text-zinc-900" style={{ padding: '80px 20px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#1A1A1A', marginBottom: '12px' }}>{t.testimonios.title}</h2>
+          {/* Línea decorativa */}
+          <div style={{ width: '60px', height: '3px', backgroundColor: '#2A2A2A', marginBottom: '32px' }} />
           <div className="grid gap-6 md:grid-cols-3">
             {t.testimonios.items.map((item) => (
               <Card key={item.t} className="bg-white border border-zinc-200 rounded-xl shadow-sm">
@@ -937,9 +1245,11 @@ function IndexPage() {
       <Separator className="container-max bg-zinc-200" />
 
       {/* Contacto */}
-      <section id="contacto" className="bg-zinc-50">
-        <div className="container-max py-14 md:py-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">{t.contacto.title}</h2>
+      <section id="contacto" className="bg-zinc-50" style={{ padding: '80px 20px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#1A1A1A', marginBottom: '12px' }}>{t.contacto.title}</h2>
+          {/* Línea decorativa */}
+          <div style={{ width: '60px', height: '3px', backgroundColor: '#2A2A2A', marginBottom: '20px' }} />
           <p className="text-zinc-600 mb-8">{t.contacto.lead}</p>
 
           <div className="grid gap-8 md:grid-cols-2">
@@ -1097,6 +1407,24 @@ function IndexPage() {
           {lang === 'es' ? texts.es.footer.copyright : texts.cat.footer.copyright}
         </div>
       </footer>
+      
+      {/* Estilos globales para títulos de secciones */}
+      <style>{`
+        @media (max-width: 767px) {
+          section#servicios,
+          section#como,
+          section#testimonios,
+          section#contacto {
+            padding: 40px 16px !important;
+          }
+          section#servicios h2,
+          section#como h2,
+          section#testimonios h2,
+          section#contacto h2 {
+            font-size: 32px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
