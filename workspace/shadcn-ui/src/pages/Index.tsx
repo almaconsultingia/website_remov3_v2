@@ -5,8 +5,10 @@ import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { Activity, GraduationCap, Heart, Users, Video, BookOpen, CheckCircle2 } from 'lucide-react';
 
 type Lang = 'es' | 'cat';
+type PriceView = 'mensual' | 'trimestral' | 'ver-todo';
 
 const WHATSAPP_NUMBER_DISPLAY = '+34 602 44 86 35';
 const WHATSAPP_NUMBER_WA = '34602448635';
@@ -84,8 +86,8 @@ const texts = {
         },
         {
           t: 'Formación',
-          pricePuntual: '0€',
-          priceQuarterly: '0€ (0€/mes)',
+          priceMonthly: '45€',
+          priceQuarterly: '120€ (40€/mes)',
           quote: 'Formación para profesionales.',
           featuresPuntual: ['Webinars en vivo', 'Workshops presenciales', 'Cápsulas On-Demand', 'Mentoría Pro'],
           featuresQuarterly: [],
@@ -250,8 +252,8 @@ const texts = {
         },
         {
           t: 'Formació',
-          pricePuntual: '0€',
-          priceQuarterly: '0€ (0€/mes)',
+          priceMonthly: '45€',
+          priceQuarterly: '120€ (40€/mes)',
           quote: 'Formació per a professionals.',
           featuresPuntual: ['Webinars en viu', 'Workshops presencials', 'Càpsules On-Demand', 'Mentoria Pro'],
           featuresQuarterly: [],
@@ -355,7 +357,7 @@ const scrollToId = (id: string) => {
 const ICON_SIZE = 16;
 
 // Función para obtener el icono SVG correspondiente a cada feature de cualquier plan
-const getFeatureIcon = (featureText: string) => {
+const getFeatureIcon = (featureText: string, iconColor: string = 'text-zinc-700') => {
   const text = featureText.toLowerCase();
   
   // Iconos SVG en blanco y negro elegantes
@@ -363,7 +365,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('acompañamiento') || text.includes('acompanyament')) {
     // Icono de mensaje/chat
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
     );
@@ -371,7 +373,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('plan') || text.includes('pla')) {
     // Icono de lápiz/editar
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
       </svg>
@@ -380,7 +382,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('protocolo') || text.includes('protocol')) {
     // Icono de menú (tres líneas horizontales)
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <line x1="3" y1="6" x2="21" y2="6" />
         <line x1="3" y1="12" x2="21" y2="12" />
         <line x1="3" y1="18" x2="21" y2="18" />
@@ -390,7 +392,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('ajustes') || text.includes('ajustos') || text.includes('carga')) {
     // Icono de mancuerna (dumbbell)
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <rect x="3" y="8" width="4" height="8" rx="1" />
         <rect x="17" y="8" width="4" height="8" rx="1" />
         <line x1="7" y1="12" x2="17" y2="12" />
@@ -400,7 +402,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('trabajo activo') || text.includes('treball actiu')) {
     // Icono de rayo (flash)
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
       </svg>
     );
@@ -408,7 +410,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('videollamada') || text.includes('videotrucada')) {
     // Icono de videocámara
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M23 7l-7 5 7 5V7z" />
         <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
       </svg>
@@ -417,7 +419,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('corrección') || text.includes('correcció')) {
     // Icono de checkmark en círculo
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <circle cx="12" cy="12" r="10" />
         <path d="M9 12l2 2 4-4" />
       </svg>
@@ -428,7 +430,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('entreno') || text.includes('entrenamiento') || text.includes('entrenament')) {
     // Icono de flechas cruzadas (shuffle)
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <polyline points="16 3 21 3 21 8" />
         <line x1="4" y1="20" x2="21" y2="3" />
         <polyline points="21 16 21 21 16 21" />
@@ -440,7 +442,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('movilidad') || text.includes('movilitat')) {
     // Icono de corredor
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <circle cx="12" cy="4" r="2" />
         <path d="M12 6v4" />
         <path d="M8 10l2 2 4-2 2 2" />
@@ -454,7 +456,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('wellness') || text.includes('recursos')) {
     // Icono de corazón/salud
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
       </svg>
     );
@@ -462,7 +464,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('comunidad') || text.includes('comunitat')) {
     // Icono de usuarios/grupo
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
         <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -475,7 +477,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('todo lo del') || text.includes('tot el del')) {
     // Icono de lista/checklist
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M9 11l3 3L22 4" />
         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
       </svg>
@@ -484,7 +486,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('re-test') || text.includes('test')) {
     // Icono de gráfico/medición
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <line x1="18" y1="20" x2="18" y2="10" />
         <line x1="12" y1="20" x2="12" y2="4" />
         <line x1="6" y1="20" x2="6" y2="14" />
@@ -494,7 +496,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('informe') || text.includes('evolución') || text.includes('evolució')) {
     // Icono de documento
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
         <polyline points="14 2 14 8 20 8" />
         <line x1="16" y1="13" x2="8" y2="13" />
@@ -506,7 +508,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('precio') || text.includes('preu')) {
     // Icono de etiqueta/precio
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
         <line x1="7" y1="7" x2="7.01" y2="7" />
       </svg>
@@ -515,7 +517,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('compromiso') || text.includes('compromís')) {
     // Icono de estrella/objetivo (compromiso)
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <circle cx="12" cy="12" r="10" />
         <polygon points="12 6 14.5 10.5 19.5 11.5 16 15 17 20 12 17 7 20 8 15 4.5 11.5 9.5 10.5 12 6" />
       </svg>
@@ -524,7 +526,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('acceso') || text.includes('accés')) {
     // Icono de llave/acceso
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
       </svg>
     );
@@ -532,7 +534,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('soporte') || text.includes('suport')) {
     // Icono de soporte/ayuda
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <circle cx="12" cy="12" r="10" />
         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
         <line x1="12" y1="17" x2="12.01" y2="17" />
@@ -544,7 +546,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('webinar')) {
     // Icono de pantalla/video
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
         <line x1="8" y1="21" x2="16" y2="21" />
         <line x1="12" y1="17" x2="12" y2="21" />
@@ -554,7 +556,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('workshop') || text.includes('presencial')) {
     // Icono de usuarios/grupo
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
         <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -565,7 +567,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('cápsula') || text.includes('càpsula') || text.includes('on-demand')) {
     // Icono de play/video
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <polygon points="5 3 19 12 5 21 5 3" />
       </svg>
     );
@@ -573,7 +575,7 @@ const getFeatureIcon = (featureText: string) => {
   if (text.includes('mentoría') || text.includes('mentoria')) {
     // Icono de persona con birrete
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
         <circle cx="12" cy="7" r="4" />
         <path d="M6 3h12M6 3v2M18 3v2" />
@@ -585,7 +587,7 @@ const getFeatureIcon = (featureText: string) => {
   
   // Icono por defecto (checkmark simple)
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-700 flex-shrink-0">
+    <svg xmlns="http://www.w3.org/2000/svg" width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${iconColor} flex-shrink-0`}>
       <path d="M20 6L9 17l-5-5" />
     </svg>
   );
@@ -595,7 +597,7 @@ function IndexPage() {
   const [lang, setLang] = useState<Lang>('es');
   const t = useMemo(() => texts[lang], [lang]);
   const [mobileOpen, setMobileOpen] = useState(false);
-
+  const [priceView, setPriceView] = useState<PriceView>('mensual');
   const [form, setForm] = useState({
     nom: '',
     email: '',
@@ -958,191 +960,330 @@ function IndexPage() {
 
       <Separator className="container-max bg-zinc-200" />
 
-      {/* Servicios - 3 planes con layout unificado en columnas */}
+      {/* Servicios - Nuevo diseño premium */}
       <section id="servicios" className="bg-white" style={{ padding: '80px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '42px', fontWeight: 700, color: '#1A1A1A', marginBottom: '12px' }}>{t.servicios.title}</h2>
           {/* Línea decorativa */}
-          <div style={{ width: '60px', height: '3px', backgroundColor: '#2A2A2A', marginBottom: '32px' }} />
-          {(() => {
-            // Calculate global maxFeatures across ALL services to ensure alignment
-            const globalMaxFeatures = Math.max(
-              ...t.servicios.plans.map((p) => {
-                const planKey = (p as any).t.toLowerCase();
-                const isFormacion = planKey.includes('formació') || planKey.includes('formación');
-                const firstPlanFeatures = isFormacion ? (p as any).featuresPuntual : (p as any).featuresMonthly;
-                return (firstPlanFeatures || []).length;
-              })
-            );
-            
-            const quarterlyGlobalMaxFeatures = Math.max(
-              ...t.servicios.plans.map((p) => {
-                return ((p as any).featuresQuarterly || []).length;
-              })
-            );
+          <div style={{ width: '60px', height: '3px', backgroundColor: '#2A2A2A', marginBottom: '48px' }} />
+          
+          {/* Toggle de 3 estados */}
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex rounded-full border border-zinc-300 bg-white p-1 shadow-sm">
+              <button
+                onClick={() => setPriceView('mensual')}
+                className={`px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${
+                  priceView === 'mensual'
+                    ? 'bg-zinc-900 text-white shadow-md'
+                    : 'text-zinc-700 hover:text-zinc-900'
+                }`}
+              >
+                MENSUAL
+              </button>
+              <button
+                onClick={() => setPriceView('trimestral')}
+                className={`px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${
+                  priceView === 'trimestral'
+                    ? 'bg-zinc-900 text-white shadow-md'
+                    : 'text-zinc-700 hover:text-zinc-900'
+                }`}
+              >
+                TRIMESTRAL
+              </button>
+              <button
+                onClick={() => setPriceView('ver-todo')}
+                className={`px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${
+                  priceView === 'ver-todo'
+                    ? 'bg-zinc-900 text-white shadow-md'
+                    : 'text-zinc-700 hover:text-zinc-900'
+                }`}
+              >
+                VER TODO
+              </button>
+            </div>
+          </div>
 
-            return (
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                {t.servicios.plans.map((p) => {
-                  const planKey = (p as any).t.toLowerCase();
-                  const isFormacion = planKey.includes('formació') || planKey.includes('formación');
-                  const isReadapt = planKey.includes('readapt');
-                  const isMembresia = planKey.includes('membres') || planKey.includes('women');
-                  
-                  // Determine which plan type to use (puntual for Formación, monthly for others)
-                  const firstPlanPrice = isFormacion ? (p as any).pricePuntual : (p as any).priceMonthly;
-                  const firstPlanFeatures = isFormacion ? (p as any).featuresPuntual : (p as any).featuresMonthly;
-                  const firstPlanLabel = isFormacion ? t.servicios.planPuntual : t.servicios.planMonthly;
-                  const firstPlanSubtext = isFormacion ? '' : t.servicios.monthToMonth;
-                  
-                  const priceQuarterlyText = (p as any).priceQuarterly ?? '';
-                  const priceQuarterlyMain = priceQuarterlyText.split('(')[0].trim();
-                  const priceQuarterlySub = priceQuarterlyText.includes('(') ? '(' + priceQuarterlyText.split('(')[1] : '';
+          {/* Tarjetas de servicios */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* READAPTACIÓN - Destacada */}
+            <div className="bg-zinc-700 text-white rounded-2xl p-8 shadow-xl grid grid-rows-[auto_auto_auto_1fr_auto] gap-6">
+              {/* Título */}
+              <h3 className="text-3xl font-bold">READAPTACIÓN</h3>
+              
+              {/* Descripción - altura fija para alineación */}
+              <p className="text-zinc-300 text-sm leading-relaxed min-h-[4.5rem]">
+                {t.servicios.plans[0].quote}
+              </p>
 
-              return (
-                <div key={p.t} className="flex flex-col h-full">
-                  {/* Header section with fixed heights to ensure cards align */}
-                  <div className="mb-4">
-                    {/* Title - fixed height for all plans, aligned at top (guaranteed same starting position) */}
-                    <div className="h-[4rem] mb-3 flex items-start justify-center">
-                      <h3 className="text-2xl md:text-3xl font-bold uppercase text-center tracking-widest">{p.t}</h3>
+              {/* Precio según toggle - altura fija para alineación */}
+              <div className="min-h-[120px] flex items-center">
+                {priceView === 'mensual' && (
+                  <div className="animate-fade-in w-full">
+                    <div className="text-5xl font-bold mb-2">150€</div>
+                    <div className="text-zinc-400 text-sm">al mes</div>
+                  </div>
+                )}
+                {priceView === 'trimestral' && (
+                  <div className="animate-fade-in w-full">
+                    <div className="text-5xl font-bold mb-2">390€</div>
+                    <div className="text-zinc-400 text-sm">130€/mes</div>
+                  </div>
+                )}
+                {priceView === 'ver-todo' && (
+                  <div className="space-y-4 animate-fade-in w-full">
+                    <div className="pb-4 border-b border-zinc-600">
+                      <div className="text-3xl font-bold mb-1">150€</div>
+                      <div className="text-zinc-400 text-sm">Mensual</div>
                     </div>
-                    
-                    {/* Quote/Description - fixed height for all plans, centered horizontally and vertically */}
-                    <div className="h-[4.5rem] flex items-center justify-center">
-                      {p.quote ? (
-                        <p className="text-base text-zinc-600 text-center">
-                          {(p as any).quote}
-                        </p>
-                      ) : (
-                        <div className="opacity-0 text-base text-zinc-600 text-center">Placeholder</div>
-                      )}
+                    <div>
+                      <div className="text-3xl font-bold mb-1">390€</div>
+                      <div className="text-zinc-400 text-sm">Trimestral (130€/mes)</div>
                     </div>
                   </div>
-
-                  {/* Two cards: first plan (puntual/monthly) and quarterly */}
-                  <div className="flex flex-col gap-3 flex-1 min-h-0">
-                    {/* First Plan Card (Puntual for Formación, Monthly for others) */}
-                    <Card className="flex flex-col border border-zinc-200 rounded-xl shadow-sm bg-white">
-                      <CardHeader className="text-center min-h-[4rem] flex flex-col justify-end bg-zinc-100 rounded-t-xl">
-                        <div className="text-[11px] font-semibold text-zinc-700 tracking-widest">{firstPlanLabel}</div>
-                      </CardHeader>
-                      <CardContent className="flex flex-col p-6 pt-0">
-                        <div className="min-h-[4.5rem] flex flex-col justify-center">
-                          {isFormacion ? (
-                            <div className="flex justify-center">
-                              <span className="inline-block px-4 py-2 bg-zinc-100 border-2 border-zinc-600 text-sm font-semibold text-zinc-700 uppercase tracking-wider">
-                                {t.servicios.comingSoon}
-                              </span>
-                            </div>
-                          ) : (
-                            <>
-                              <div className="text-3xl font-bold text-center text-zinc-900 mb-1">{firstPlanPrice}</div>
-                              {firstPlanSubtext && (
-                                <div className="text-xs text-zinc-500 text-center">{firstPlanSubtext}</div>
-                              )}
-                            </>
-                          )}
-                        </div>
-                        <div className="border-t border-zinc-200 my-4" />
-                        <div className="flex flex-col gap-3 text-zinc-700">
-                          {Array.from({ length: globalMaxFeatures }).map((_, idx: number) => {
-                            const feature = (firstPlanFeatures || [])[idx];
-                            return (
-                              <div key={idx} className="min-h-[1.75rem] flex items-center gap-2">
-                                {feature ? (
-                                  <>
-                                    {getFeatureIcon(feature)}
-                                    <span className="text-sm">{feature}</span>
-                                  </>
-                                ) : (
-                                  <div className="opacity-0 h-[1.75rem]">Placeholder</div>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    {/* Quarterly Plan Card - visually distinct */}
-                    <Card className="flex flex-col border-2 border-zinc-900 rounded-xl shadow-sm bg-zinc-50">
-                      <CardHeader className="text-center min-h-[4rem] flex flex-col justify-end bg-zinc-900 rounded-t-xl">
-                        <div className="text-[11px] font-semibold text-white tracking-widest">{t.servicios.planQuarterly}</div>
-                      </CardHeader>
-                      <CardContent className="flex flex-col p-6 pt-0">
-                        <div className="min-h-[4.5rem] flex flex-col justify-center">
-                          {isFormacion ? (
-                            <div className="flex justify-center">
-                              <span className="inline-block px-4 py-2 bg-zinc-100 border-2 border-zinc-600 text-sm font-semibold text-zinc-700 uppercase tracking-wider">
-                                {t.servicios.comingSoon}
-                              </span>
-                            </div>
-                          ) : (
-                            <>
-                              <div className="text-3xl font-bold text-center text-zinc-900 mb-1">{priceQuarterlyMain}</div>
-                              {priceQuarterlySub ? (
-                                <div className="text-xs text-center text-zinc-500">{priceQuarterlySub}</div>
-                              ) : (
-                                <div className="text-xs text-center text-zinc-500 opacity-0">{t.servicios.monthToMonth}</div>
-                              )}
-                            </>
-                          )}
-                        </div>
-                        <div className="border-t border-zinc-200 my-4" />
-                        <div className="flex flex-col gap-3 text-zinc-700">
-                        {Array.from({ length: quarterlyGlobalMaxFeatures }).map((_, idx: number) => {
-                            const feature = ((p as any).featuresQuarterly || [])[idx];
-                            return (
-                              <div key={idx} className="min-h-[1.75rem] flex items-center gap-2">
-                                {isFormacion && feature ? (
-                                  <span className="inline-block px-3 py-1 bg-zinc-100 border-2 border-zinc-600 rounded-full text-xs font-semibold text-zinc-700 uppercase tracking-wider">
-                                    {t.servicios.comingSoon}
-                                  </span>
-                                ) : feature ? (
-                                  <>
-                                    {getFeatureIcon(feature)}
-                                    <span className="text-sm">{feature}</span>
-                                  </>
-                                ) : (
-                                  <div className="opacity-0 h-[1.75rem]">Placeholder</div>
-                                )}
-                              </div>
-                            );
-                          })}
-
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-
-                  {/* Button - same position for all */}
-                  <div className="mt-6 flex justify-center">       
-                    {isFormacion ? (
-                      <Button
-                        onClick={() => {
-                          scrollToId('contacto');
-                          setForm({ ...form, missatge: t.servicios.moreInfoFormacion });
-                        }}
-                        className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
-                      >
-                        {t.servicios.moreInfo}
-                      </Button>
-                    ) : (
-                      <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
-                        <Button className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800">
-                          {t.menu.reservar}
-                        </Button>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+                )}
               </div>
-            );
-          })()}
+
+              {/* Features - 1fr absorbe espacio extra */}
+              <div className="space-y-3">
+                {priceView === 'mensual' && (
+                  <>
+                    {t.servicios.plans[0].featuresMonthly.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        {getFeatureIcon(feature, 'text-zinc-200')}
+                        <span className="text-zinc-200 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                {priceView === 'trimestral' && (
+                  <>
+                    {t.servicios.plans[0].featuresQuarterly.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        {getFeatureIcon(feature, 'text-zinc-200')}
+                        <span className="text-zinc-200 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                {priceView === 'ver-todo' && (
+                  <>
+                    {t.servicios.plans[0].featuresMonthly.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        {getFeatureIcon(feature, 'text-zinc-200')}
+                        <span className="text-zinc-200 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                    {t.servicios.plans[0].featuresQuarterly.length > 0 && (
+                      <>
+                        {t.servicios.plans[0].featuresQuarterly.map((feature, idx) => (
+                          <div key={`quarterly-${idx}`} className="flex items-start gap-3">
+                            {getFeatureIcon(feature, 'text-zinc-200')}
+                            <span className="text-zinc-200 text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </>
+                    )}
+                  </>
+                )}
+              </div>
+
+              {/* Botón - auto, alineado abajo */}
+              <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
+                <Button className="w-full rounded-full bg-white text-zinc-900 hover:bg-zinc-100 font-medium transition-all duration-300 hover:shadow-lg">
+                  {t.menu.reservar}
+                </Button>
+              </a>
+            </div>
+
+            {/* ENTRENAMIENTO - Centro */}
+            <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-8 shadow-sm grid grid-rows-[auto_auto_auto_1fr_auto] gap-6 hover:shadow-md transition-shadow duration-300">
+              {/* Título */}
+              <h3 className="text-3xl font-bold text-zinc-900">ENTRENAMIENTO</h3>
+              
+              {/* Descripción - altura fija para alineación */}
+              <p className="text-zinc-600 text-sm leading-relaxed min-h-[4.5rem]">
+                {t.servicios.plans[1].quote}
+              </p>
+
+              {/* Precio según toggle - altura fija para alineación */}
+              <div className="min-h-[120px] flex items-center">
+                {priceView === 'mensual' && (
+                  <div className="animate-fade-in w-full">
+                    <div className="text-5xl font-bold mb-2 text-zinc-900">79€</div>
+                    <div className="text-zinc-500 text-sm">al mes</div>
+                  </div>
+                )}
+                {priceView === 'trimestral' && (
+                  <div className="animate-fade-in w-full">
+                    <div className="text-5xl font-bold mb-2 text-zinc-900">225€</div>
+                    <div className="text-zinc-500 text-sm">75€/mes</div>
+                  </div>
+                )}
+                {priceView === 'ver-todo' && (
+                  <div className="space-y-4 animate-fade-in w-full">
+                    <div className="pb-4 border-b border-zinc-200">
+                      <div className="text-3xl font-bold mb-1 text-zinc-900">79€</div>
+                      <div className="text-zinc-500 text-sm">Mensual</div>
+                    </div>
+                    <div>
+                      <div className="text-3xl font-bold mb-1 text-zinc-900">225€</div>
+                      <div className="text-zinc-500 text-sm">Trimestral (75€/mes)</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Features - 1fr absorbe espacio extra */}
+              <div className="space-y-3">
+                {priceView === 'mensual' && (
+                  <>
+                    {t.servicios.plans[1].featuresMonthly.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        {getFeatureIcon(feature)}
+                        <span className="text-zinc-700 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                {priceView === 'trimestral' && (
+                  <>
+                    {t.servicios.plans[1].featuresQuarterly.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        {getFeatureIcon(feature)}
+                        <span className="text-zinc-700 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                {priceView === 'ver-todo' && (
+                  <>
+                    {t.servicios.plans[1].featuresMonthly.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        {getFeatureIcon(feature)}
+                        <span className="text-zinc-700 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                    {t.servicios.plans[1].featuresQuarterly.length > 0 && (
+                      <>
+                        {t.servicios.plans[1].featuresQuarterly.map((feature, idx) => (
+                          <div key={`quarterly-${idx}`} className="flex items-start gap-3">
+                            {getFeatureIcon(feature)}
+                            <span className="text-zinc-700 text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </>
+                    )}
+                  </>
+                )}
+              </div>
+
+              {/* Botón - auto, alineado abajo */}
+              <a href={RESERVA_CAL_URL} target="_blank" rel="noreferrer">
+                <Button className="w-full rounded-full bg-zinc-900 text-white hover:bg-zinc-800 font-medium transition-all duration-300 hover:shadow-lg">
+                  {t.menu.reservar}
+                </Button>
+              </a>
+            </div>
+
+            {/* FORMACIÓN - Derecha */}
+            <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-8 shadow-sm grid grid-rows-[auto_auto_auto_1fr_auto] gap-6 hover:shadow-md transition-shadow duration-300">
+              {/* Título */}
+              <h3 className="text-3xl font-bold text-zinc-900">FORMACIÓN</h3>
+              
+              {/* Descripción - altura fija para alineación */}
+              <p className="text-zinc-600 text-sm leading-relaxed min-h-[4.5rem]">
+                {t.servicios.plans[2].quote}
+              </p>
+
+              {/* Precio placeholder - altura fija para alineación (vacío pero mantiene espacio) */}
+              <div className="min-h-[120px]"></div>
+
+              {/* Features - 1fr absorbe espacio extra */}
+              <div className="space-y-3">
+                {priceView === 'mensual' && (
+                  <>
+                    {t.servicios.plans[2].featuresPuntual.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        {getFeatureIcon(feature)}
+                        <span className="text-zinc-700 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                {priceView === 'trimestral' && (
+                  <>
+                    {t.servicios.plans[2].featuresQuarterly && t.servicios.plans[2].featuresQuarterly.length > 0 && (
+                      <>
+                        {t.servicios.plans[2].featuresQuarterly.map((feature, idx) => (
+                          <div key={idx} className="flex items-start gap-3">
+                            {getFeatureIcon(feature)}
+                            <span className="text-zinc-700 text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </>
+                    )}
+                  </>
+                )}
+                {priceView === 'ver-todo' && (
+                  <>
+                    {t.servicios.plans[2].featuresPuntual.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        {getFeatureIcon(feature)}
+                        <span className="text-zinc-700 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                    {t.servicios.plans[2].featuresQuarterly && t.servicios.plans[2].featuresQuarterly.length > 0 && (
+                      <>
+                        {t.servicios.plans[2].featuresQuarterly.map((feature, idx) => (
+                          <div key={`quarterly-${idx}`} className="flex items-start gap-3">
+                            {getFeatureIcon(feature)}
+                            <span className="text-zinc-700 text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </>
+                    )}
+                  </>
+                )}
+              </div>
+
+              {/* Botón - auto, alineado abajo */}
+              <Button
+                onClick={() => {
+                  scrollToId('contacto');
+                  setForm({ ...form, missatge: t.servicios.moreInfoFormacion });
+                }}
+                className="w-full rounded-full bg-zinc-900 text-white hover:bg-zinc-800 font-medium transition-all duration-300 hover:shadow-lg"
+              >
+                {t.servicios.moreInfo}
+              </Button>
+            </div>
+          </div>
         </div>
+
+        {/* Estilos para animación fade-in */}
+        <style>{`
+          @keyframes fade-in {
+            from {
+              opacity: 0;
+              transform: translateY(4px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-fade-in {
+            animation: fade-in 0.3s ease-out;
+          }
+          @media (max-width: 767px) {
+            section#servicios {
+              padding: 40px 16px !important;
+            }
+            section#servicios h2 {
+              font-size: 32px !important;
+            }
+          }
+        `}</style>
       </section>
 
       <Separator className="container-max bg-zinc-200" />
@@ -1265,12 +1406,12 @@ function IndexPage() {
                 <h3 className="text-xl font-semibold text-zinc-900 mb-4">{t.contacto.other_title}</h3>
                 <div className="flex flex-col gap-3">
                   <a href={`https://wa.me/${WHATSAPP_NUMBER_WA}`} target="_blank" rel="noreferrer">
-                    <Button variant="outline" className="w-full rounded-full border-zinc-300 text-zinc-900 hover:bg-zinc-100">
+                    <Button variant="outline" className="w-full rounded-full border-zinc-300 text-zinc-900 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-all duration-300 hover:shadow-lg">
                       {t.contacto.whatsapp_btn}
                     </Button>
                   </a>
                   <a href={`mailto:${EMAIL}`}>
-                    <Button variant="outline" className="w-full rounded-full border-zinc-300 text-zinc-900 hover:bg-zinc-100">
+                    <Button variant="outline" className="w-full rounded-full border-zinc-300 text-zinc-900 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-all duration-300 hover:shadow-lg">
                       {t.contacto.email_btn}
                     </Button>
                   </a>
