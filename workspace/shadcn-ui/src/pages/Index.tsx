@@ -1605,6 +1605,42 @@ function IndexPage() {
           section#contacto h2 {
             font-size: 32px !important;
           }
+          /* Ajustes del video del hero en móvil */
+          section#hero {
+            min-height: 100vh !important;
+            position: relative !important;
+            overflow: hidden !important;
+          }
+          section#hero video {
+            object-fit: cover !important;
+            object-position: 60% center !important;
+            width: 100% !important;
+            height: 100% !important;
+            min-width: 100% !important;
+            min-height: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+          }
+          section#hero .container-max {
+            min-height: 100vh !important;
+          }
+          
+          /* Ajuste para pantallas muy pequeñas - centrar en una persona */
+          @media (max-width: 480px) {
+            section#hero video {
+              object-position: 65% center !important;
+            }
+          }
+          
+          /* Ajuste para tablets pequeñas */
+          @media (min-width: 481px) and (max-width: 767px) {
+            section#hero video {
+              object-position: 55% center !important;
+            }
+          }
         }
       `}</style>
     </div>
