@@ -605,6 +605,76 @@ function IndexPage() {
     missatge: '',
   });
 
+  // Helper para renderizar el bloque de precio
+  const renderPriceBlock = (
+    priceView: PriceView,
+    monthlyPrice: string | null,
+    monthlyPeriod: string | null,
+    quarterlyPrice: string | null,
+    quarterlyPeriod: string | null,
+    isDark: boolean
+  ) => {
+    const textColor = isDark ? 'text-white' : 'text-zinc-900';
+    const textColorSecondary = isDark ? 'text-zinc-400' : 'text-zinc-500';
+    const hasPrice = monthlyPrice !== null || quarterlyPrice !== null;
+
+    return (
+      <div className="min-h-[120px] w-full overflow-hidden flex items-center justify-center">
+        {!hasPrice ? (
+          // PRÓXIMAMENTE cuando no hay precio
+          <div className="animate-fade-in w-full text-center px-2">
+            <span className="inline-block bg-zinc-200 text-zinc-700 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider whitespace-nowrap">
+              PRÓXIMAMENTE
+            </span>
+          </div>
+        ) : priceView === 'mensual' && monthlyPrice ? (
+          // Precio mensual
+          <div className="animate-fade-in w-full text-center">
+            <div className={`text-5xl font-bold mb-2 ${textColor}`}>{monthlyPrice}</div>
+            {monthlyPeriod && (
+              <div className={`text-sm ${textColorSecondary}`}>{monthlyPeriod}</div>
+            )}
+          </div>
+        ) : priceView === 'trimestral' && quarterlyPrice ? (
+          // Precio trimestral
+          <div className="animate-fade-in w-full text-center">
+            <div className={`text-5xl font-bold mb-2 ${textColor}`}>{quarterlyPrice}</div>
+            {quarterlyPeriod && (
+              <div className={`text-sm ${textColorSecondary}`}>{quarterlyPeriod}</div>
+            )}
+          </div>
+        ) : priceView === 'ver-todo' ? (
+          // Ambos precios
+          <div className="space-y-4 animate-fade-in w-full">
+            {monthlyPrice && (
+              <div className={`pb-4 border-b ${isDark ? 'border-zinc-600' : 'border-zinc-200'}`}>
+                <div className={`text-3xl font-bold mb-1 ${textColor}`}>{monthlyPrice}</div>
+                {monthlyPeriod && (
+                  <div className={`text-sm ${textColorSecondary}`}>Mensual</div>
+                )}
+              </div>
+            )}
+            {quarterlyPrice && (
+              <div>
+                <div className={`text-3xl font-bold mb-1 ${textColor}`}>{quarterlyPrice}</div>
+                {quarterlyPeriod && (
+                  <div className={`text-sm ${textColorSecondary}`}>Trimestral {quarterlyPeriod}</div>
+                )}
+              </div>
+            )}
+          </div>
+        ) : (
+          // Fallback: PRÓXIMAMENTE
+          <div className="animate-fade-in w-full text-center px-2">
+            <span className="inline-block bg-zinc-200 text-zinc-700 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider whitespace-nowrap">
+              PRÓXIMAMENTE
+            </span>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.nom || !form.email || !form.missatge) {
@@ -1016,32 +1086,14 @@ function IndexPage() {
               </p>
 
               {/* Precio según toggle - altura fija para alineación */}
-              <div className="min-h-[120px] flex items-center">
-                {priceView === 'mensual' && (
-                  <div className="animate-fade-in w-full">
-                    <div className="text-5xl font-bold mb-2">150€</div>
-                    <div className="text-zinc-400 text-sm">al mes</div>
-                  </div>
-                )}
-                {priceView === 'trimestral' && (
-                  <div className="animate-fade-in w-full">
-                    <div className="text-5xl font-bold mb-2">390€</div>
-                    <div className="text-zinc-400 text-sm">130€/mes</div>
-                  </div>
-                )}
-                {priceView === 'ver-todo' && (
-                  <div className="space-y-4 animate-fade-in w-full">
-                    <div className="pb-4 border-b border-zinc-600">
-                      <div className="text-3xl font-bold mb-1">150€</div>
-                      <div className="text-zinc-400 text-sm">Mensual</div>
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold mb-1">390€</div>
-                      <div className="text-zinc-400 text-sm">Trimestral (130€/mes)</div>
-                    </div>
-                  </div>
-                )}
-              </div>
+              {renderPriceBlock(
+                priceView,
+                '150€',
+                'al mes',
+                '390€',
+                '(130€/mes)',
+                true
+              )}
 
               {/* Features - 1fr absorbe espacio extra */}
               <div className="space-y-3">
@@ -1106,32 +1158,14 @@ function IndexPage() {
               </p>
 
               {/* Precio según toggle - altura fija para alineación */}
-              <div className="min-h-[120px] flex items-center">
-                {priceView === 'mensual' && (
-                  <div className="animate-fade-in w-full">
-                    <div className="text-5xl font-bold mb-2 text-zinc-900">79€</div>
-                    <div className="text-zinc-500 text-sm">al mes</div>
-                  </div>
-                )}
-                {priceView === 'trimestral' && (
-                  <div className="animate-fade-in w-full">
-                    <div className="text-5xl font-bold mb-2 text-zinc-900">225€</div>
-                    <div className="text-zinc-500 text-sm">75€/mes</div>
-                  </div>
-                )}
-                {priceView === 'ver-todo' && (
-                  <div className="space-y-4 animate-fade-in w-full">
-                    <div className="pb-4 border-b border-zinc-200">
-                      <div className="text-3xl font-bold mb-1 text-zinc-900">79€</div>
-                      <div className="text-zinc-500 text-sm">Mensual</div>
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold mb-1 text-zinc-900">225€</div>
-                      <div className="text-zinc-500 text-sm">Trimestral (75€/mes)</div>
-                    </div>
-                  </div>
-                )}
-              </div>
+              {renderPriceBlock(
+                priceView,
+                '79€',
+                'al mes',
+                '225€',
+                '(75€/mes)',
+                false
+              )}
 
               {/* Features - 1fr absorbe espacio extra */}
               <div className="space-y-3">
@@ -1195,8 +1229,15 @@ function IndexPage() {
                 {t.servicios.plans[2].quote}
               </p>
 
-              {/* Precio placeholder - altura fija para alineación (vacío pero mantiene espacio) */}
-              <div className="min-h-[120px]"></div>
+              {/* Precio - PRÓXIMAMENTE (no hay precio disponible) */}
+              {renderPriceBlock(
+                priceView,
+                null,
+                null,
+                null,
+                null,
+                false
+              )}
 
               {/* Features - 1fr absorbe espacio extra */}
               <div className="space-y-3">
