@@ -175,7 +175,7 @@ const texts = {
       }
     },
     footer: {
-      left_tagline: 'Readaptación · Entrenamiento mujeres · Formación',
+      left_tagline: 'Readaptación · Entrenamiento · Formación',
       contacto: 'Contacto',
       rrss: 'RRSS',
       instagram: 'remov3traning',
@@ -338,7 +338,7 @@ const texts = {
       }
     },
     footer: {
-      left_tagline: 'Readaptació ·  Entrenament dones · Formació',
+      left_tagline: 'Readaptació ·  Entrenament · Formació',
       contacto: 'Contacte',
       rrss: 'Xarxes',
       instagram: 'remov3traning',
