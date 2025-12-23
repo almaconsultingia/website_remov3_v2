@@ -5,7 +5,7 @@ import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Activity, GraduationCap, Heart, Users, Video, BookOpen, CheckCircle2 } from 'lucide-react';
+import { Activity, GraduationCap, Heart, Users, Video, BookOpen, CheckCircle2, Instagram } from 'lucide-react';
 
 type Lang = 'es' | 'cat';
 type PriceView = 'mensual' | 'trimestral' | 'ver-todo';
@@ -178,7 +178,7 @@ const texts = {
       left_tagline: 'Readaptación · Entrenamiento mujeres · Formación',
       contacto: 'Contacto',
       rrss: 'RRSS',
-      instagram: 'Instagram',
+      instagram: 'remov3traning',
       copyright: `© ${new Date().getFullYear()} RE:MOV3 · Adrià Vidal Noguera`,
       address: 'Carrer de la Pau, 123, 08000 Barcelona',
     },
@@ -341,7 +341,7 @@ const texts = {
       left_tagline: 'Readaptació ·  Entrenament dones · Formació',
       contacto: 'Contacte',
       rrss: 'Xarxes',
-      instagram: 'Instagram',
+      instagram: 'remov3traning',
       copyright: `© ${new Date().getFullYear()} RE:MOV3 · Adrià Vidal Noguera`,
       address: 'Carrer de la Pau, 123, 08000 Barcelona',
     },
@@ -1577,8 +1577,9 @@ function IndexPage() {
                   href="https://www.instagram.com/remov3training/"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-zinc-900"
+                  className="hover:text-zinc-900 flex items-center gap-2"
                 >
+                  <Instagram size={18} className="text-zinc-700" />
                   {lang === 'es' ? texts.es.footer.instagram : texts.cat.footer.instagram}
                 </a>
               </li>
