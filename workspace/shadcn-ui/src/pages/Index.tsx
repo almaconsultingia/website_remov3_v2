@@ -12,7 +12,7 @@ type PriceView = 'mensual' | 'trimestral' | 'ver-todo';
 
 const WHATSAPP_NUMBER_DISPLAY = '+34 602 44 86 35';
 const WHATSAPP_NUMBER_WA = '34602448635';
-const EMAIL = 'almaxremov3@gmail.com';
+const EMAIL = 'info@remov3.es';
 // Botón único de reserva para cualquier servicio (cal.com)
 const RESERVA_CAL_URL = 'https://cal.com/axrremov/reunion-45-minutos';
 
